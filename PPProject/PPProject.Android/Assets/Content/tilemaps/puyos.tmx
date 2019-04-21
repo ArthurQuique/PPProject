@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="6" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="1">
+ <tileset firstgid="1" source="dungeon_2.tsx"/>
+ <tileset firstgid="61" source="classic puyos2.tsx"/>
+ <layer id="1" name="back" width="6" height="12">
+  <data encoding="csv">
+43,43,43,43,43,43,
+43,43,43,43,43,43,
+43,43,43,43,43,43,
+43,43,43,43,43,43,
+43,43,43,43,43,43,
+43,43,43,43,43,43,
+43,43,43,43,43,43,
+43,43,43,43,43,43,
+43,43,43,43,43,43,
+43,43,43,43,43,43,
+43,43,43,43,43,43,
+43,43,43,43,43,43
+</data>
+ </layer>
+ <layer id="2" name="puyos" width="6" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,77,0,0,0,
+0,0,61,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,0,0,0,0,
+0,0,62,109,0,0,
+0,0,63,93,0,0
+</data>
+ </layer>
+</map>

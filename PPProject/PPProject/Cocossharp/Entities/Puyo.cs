@@ -12,6 +12,7 @@ namespace PPProject
 
         //Sprite du Puyo
         private CCSprite sprite;
+        private int color;
       
         /*
          * Creation du Puyo avec Sprite aléatoire

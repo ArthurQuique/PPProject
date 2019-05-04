@@ -23,11 +23,12 @@ namespace PPProject
             String path = String.Format("puyo/puyo-{0}", x);
             sprite = new CCSprite(path)
             {
-                AnchorPoint = CCPoint.AnchorMiddle,
+                AnchorPoint = CCPoint.AnchorLowerLeft,
                 IsAntialiased = false,
                 Scale = 2.5f
             };
             AddChild(sprite);
+            ContentSize = sprite.ScaledContentSize;
         }
         /*
          * Renvoie un nombre aléatoire

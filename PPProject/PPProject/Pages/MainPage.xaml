@@ -9,7 +9,7 @@
         <Label Text="Welcome to Puyo Puyo!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
-        <Button Text="Lancer le jeu" Clicked="Button_Clicked" />
+        <Button Text="Lancer le jeu" Clicked="Button_Clicked"/>
     </StackLayout>
 
 

@@ -53,7 +53,7 @@ namespace PPProject
             {
                 for (int j = 0; j < HEI; j++) //Pour toute la hauteur
                 {
-                    points[i, j] = new CCPoint(tx + (p.GetSpriteSize() / 2), ty + (p.GetSpriteSize() / 2)); //Création des points
+                    points[i, j] = new CCPoint(tx,ty); //Création des points
                     ty += p.GetSpriteSize();
                 }
                 ty = 0;
@@ -75,11 +75,24 @@ namespace PPProject
             return points[2, 11];
         }
 
+        //Donne le Puyo à une case donnée
+        public Puyo GetPuyoAtPoint(int x, int y)
+        {
+            return pTab[x, y];
+        }
+
+        //Retourne la première case d'une colonne donnée
         public CCPoint GetPointDown(int b)
         {
             return points[b, 0];
         }
 
+        //Retourne le bord gauche de la grille
+        public float GetLeftBorder()
+        {
+            return points[0, 0].X;
+
+        }
         
 
     }

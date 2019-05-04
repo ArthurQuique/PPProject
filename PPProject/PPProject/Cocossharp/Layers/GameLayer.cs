@@ -9,8 +9,7 @@ namespace PPProject
     {
 
         // Define a label variable
-        private CCLabel label;
-        private Pair pair;
+        private Pair pair = null;
         private Puyo p;
         private Grid grid;
         // Define CCTileMap
@@ -19,17 +18,43 @@ namespace PPProject
         
         public GameLayer()
         {
-
-            
             grid = new Grid();
-            pair = new Pair(grid);
-            pair.SetPosition(grid.GetStartingPoint()); //Place la paire au point de départ
-           
             this.AddChild(grid);
-            this.AddChild(pair);
+            StartGame();
+        }
 
+        //Démarrage du jeu
+        public void StartGame()
+        {
+            if (!WatchGameOver()) 
+            {
+                /*
+                 * Descente de la paire
+                 */
+                pair = new Pair(grid); //Création d'une nouvelle paire
+                this.AddChild(pair);
+                pair.SetPosition(grid.GetStartingPoint()); //Place la paire au point de départ
+                pair.TurnOnVelocity();
+                /*
+                 * Arrivée en bas
+                 */
 
+            }
+            
 
+        }
+
+        //Regarder si il y a un game over (3è colonne remplie)
+        public bool WatchGameOver()
+        {
+            if (grid.GetPuyoAtPoint(2, 11) != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         protected override void AddedToScene()

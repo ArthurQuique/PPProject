@@ -44,7 +44,7 @@ namespace PPProject
         //Regarder si il y a un game over (3è colonne remplie)
         public bool WatchGameOver()
         {
-            if (grid.GetPuyoAtPoint(2, 11) != null)
+            if (grid.GetPuyoAtPoint(2, 12) != null)
             {
                 return true;
             }

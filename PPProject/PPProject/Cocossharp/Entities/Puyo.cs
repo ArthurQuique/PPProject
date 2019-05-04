@@ -19,8 +19,8 @@ namespace PPProject
          */
         public Puyo() : base()
         {
-            int x = RandomNumber();
-            String path = String.Format("puyo/puyo-{0}", x);
+            int color = RandomNumber();
+            String path = String.Format("puyo/puyo-{0}", color);
             sprite = new CCSprite(path)
             {
                 AnchorPoint = CCPoint.AnchorLowerLeft,
@@ -56,7 +56,7 @@ namespace PPProject
          */
         public void Delete()
         {
-            //removeFromPhysicsWorld ()       
+            //removeFromPhysicsWorld()       
         }
 
         public float GetSpriteSize() { return sprite.ScaledContentSize.Width; }

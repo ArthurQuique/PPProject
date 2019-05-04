@@ -36,14 +36,12 @@ namespace PPProject
             placement = 1; //Puyo 2 au-dessus
             this.ContentSize = new CCSize(p1.ContentSize.Width, p1.ContentSize.Height * 2);
             bounds = new CCRect(this.PositionX, this.PositionY, this.ContentSize.Width, this.ContentSize.Height);
-            
         }
 
         public void SetPosition(CCPoint point)
         {
             var coreAction = new CCMoveTo(0, point);
             this.AddAction(coreAction);
-            
         }
 
         public void TurnOnVelocity()

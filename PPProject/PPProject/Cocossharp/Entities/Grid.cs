@@ -8,11 +8,11 @@ namespace PPProject
     public class Grid : CCNode
     {
 
-        private int HEI;
-        private int WID;
-        private Puyo p;
-        private Puyo[,] pTab;
-        private CCPoint[,] points;
+        private int HEI; //Hauteur de la grille
+        private int WID; //Largeur de la grille
+        private Puyo p; //Puyo exemple
+        private Puyo[,] pTab; //Tableau des Puyos 
+        private CCPoint[,] points; //Tableau de points
         private CCDrawNode drawNode;
 
         /*
@@ -30,7 +30,7 @@ namespace PPProject
         public void CreateGrid()
         {
             WID = 6;
-            HEI = 12;
+            HEI = 13;
         
             
             points = new CCPoint[WID, HEI];
@@ -71,7 +71,7 @@ namespace PPProject
         //Donne le point de départ
         public CCPoint GetStartingPoint()
         {
-            return points[2, 11];
+            return points[2, 12];
         }
 
         //Donne le Puyo à une case donnée

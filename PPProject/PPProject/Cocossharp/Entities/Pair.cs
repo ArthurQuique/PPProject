@@ -55,8 +55,12 @@ namespace PPProject
          */
        public void ApplyVelocity(float time)
         {
-            PositionY -= 50 * time; //Descente
-            UpdateBounds();
+            if (this.BoundingBoxTransformedToWorld.Origin.Y > grid.GetPointDown(column).Y)
+            {
+                PositionY -= 50 * time; //Descente
+            }
+           
+            //UpdateBounds();
             /*
              * Affichage du rectangle bounds (à commenter sur le produit final)
              */

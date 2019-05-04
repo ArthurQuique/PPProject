@@ -12,6 +12,7 @@ namespace PPProject
         private int WID; //Largeur de la grille
         private Puyo p; //Puyo exemple
         private Puyo[,] pTab; //Tableau des Puyos 
+        private int[] columns; //Columns
         private CCPoint[,] points; //Tableau de points
         private CCDrawNode drawNode;
 
@@ -37,7 +38,12 @@ namespace PPProject
             CreatePoints();
 
             pTab = new Puyo[WID, HEI];
-           // AddChild(drawNode);
+            columns = new int[6];
+            for(int i = 0; i < WID; i++)
+            {
+                columns[i] = 0;
+            }
+            // AddChild(drawNode);
 
         }
 
@@ -65,6 +71,7 @@ namespace PPProject
         {
             p1.SetPosition(points[x, y]);
             pTab[x, y] = p1;
+            columns[x]++;
             AddChild(p1);
         }
 
@@ -83,7 +90,7 @@ namespace PPProject
         //Retourne la première case d'une colonne donnée
         public CCPoint GetPointDown(int b)
         {
-            return points[b, 0];
+            return points[b, columns[b]];
         }
 
         //Retourne le bord gauche de la grille

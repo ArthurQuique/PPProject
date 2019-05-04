@@ -38,10 +38,7 @@ namespace PPProject
                 /*
                  * Arrivée en bas
                  */
-
             }
-            
-
         }
 
         //Regarder si il y a un game over (3è colonne remplie)

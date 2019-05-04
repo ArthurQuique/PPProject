@@ -62,11 +62,11 @@ namespace PPProject
             /*
              * Affichage du rectangle bounds (à commenter sur le produit final)
              */
-            Console.WriteLine(bounds);
+            /*Console.WriteLine(bounds);
             RemoveChild(collisionBox);
             collisionBox = new CCDrawNode();
             collisionBox.DrawRect(this.bounds, CCColor4B.Transparent, 2f, CCColor4B.Red);
-            AddChild(collisionBox);
+            AddChild(collisionBox);*/
             
             
         }

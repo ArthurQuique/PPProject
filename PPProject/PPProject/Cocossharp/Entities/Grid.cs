@@ -22,7 +22,6 @@ namespace PPProject
         {
             p = new Puyo();
             CreateGrid();
-
         }
 
         /*

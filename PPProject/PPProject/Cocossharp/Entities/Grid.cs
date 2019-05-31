@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PPProject
+namespace PPProject.Cocossharp.Entities
 {
     public class Grid : CCNode
     {
@@ -14,6 +14,7 @@ namespace PPProject
         private Puyo[,] pTab; //Tableau des Puyos 
         private int[] columns; //Columns
         private CCPoint[,] points; //Tableau de points
+        private CCRect bounds;
         private CCDrawNode drawNode;
 
         /*
@@ -32,7 +33,6 @@ namespace PPProject
         {
             WID = 6;
             HEI = 13;
-        
             
             points = new CCPoint[WID, HEI];
             CreatePoints();
@@ -64,6 +64,7 @@ namespace PPProject
                 ty = 0;
                 tx += p.GetSpriteSize();
             }
+            bounds = new CCRect(0, 0, WID * p.GetSpriteSize(), HEI * p.GetSpriteSize()+22000);
         }
 
         //Ajoute un Puyo à la grille
@@ -100,6 +101,10 @@ namespace PPProject
 
         }
         
+        public bool IsInBounds(Pair pair)
+        {
+            return (bounds.IntersectsRect(pair.GetP1().BoundingBoxTransformedToWorld) && bounds.IntersectsRect(pair.GetP2().BoundingBoxTransformedToWorld));
+        }
 
     }
 }

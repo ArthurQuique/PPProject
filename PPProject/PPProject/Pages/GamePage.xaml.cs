@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using CocosSharp;
+using PPProject.Cocossharp.Scenes;
 
 namespace PPProject
 {
@@ -21,7 +22,7 @@ namespace PPProject
         public GamePage ()
 		{
 			InitializeComponent ();
-            this.Content = ALayout;
+            Content = ALayout;
             CreateGameView(GameLayout);
 
             /*

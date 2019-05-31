@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using CocosSharp;
 using Microsoft.Xna.Framework;
+using PPProject.Cocossharp.Entities;
 
-namespace PPProject
+namespace PPProject.Cocossharp.Layers
 {
     public class GameLayer : CCLayer
     {
@@ -12,6 +13,7 @@ namespace PPProject
         private Pair pair = null;
         private Puyo p;
         private Grid grid;
+        private CCRect bounds;
         // Define CCTileMap
        // CCTileMap tileMap;
 
@@ -19,7 +21,7 @@ namespace PPProject
         public GameLayer()
         {
             grid = new Grid();
-            this.AddChild(grid);
+            AddChild(grid);
             StartGame();
         }
 
@@ -32,12 +34,13 @@ namespace PPProject
                  * Descente de la paire
                  */
                 pair = new Pair(grid); //Création d'une nouvelle paire
-                this.AddChild(pair);
-                pair.SetPosition(grid.GetStartingPoint()); //Place la paire au point de départ
+                AddChild(pair);
+                GetPairStarted(); //Place la paire au point de départ
                 pair.TurnOnVelocity();
                 /*
                  * Arrivée en bas
                  */
+                 
             }
         }
 
@@ -54,12 +57,20 @@ namespace PPProject
             }
         }
 
+        /*
+         * Placement de la paire
+         */
+        public void GetPairStarted()
+        {
+            pair.Position = grid.GetStartingPoint();
+        }
+
         protected override void AddedToScene()
         {
             base.AddedToScene();
             // Use the bounds to layout the positioning of our drawable assets
-            var bounds = VisibleBoundsWorldspace;
-
+            bounds = VisibleBoundsWorldspace;
+            ContentSize = new CCSize(bounds.Size.Width, bounds.Size.Height);
             
             // Register for touch events
             var touchListener = new CCEventListenerTouchAllAtOnce

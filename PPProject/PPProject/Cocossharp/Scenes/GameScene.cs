@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using CocosSharp;
 using Microsoft.Xna.Framework.Graphics;
+using PPProject.Cocossharp.Layers;
 
-namespace PPProject
+namespace PPProject.Cocossharp.Scenes
 {
     public class GameScene : CCScene
     {
@@ -16,10 +17,10 @@ namespace PPProject
             //Création de l'arrière-plan
             var backgroundLayer = new CCLayer();
             CreateBackground(gameView, backgroundLayer);
-            this.AddChild(backgroundLayer);
+            AddChild(backgroundLayer);
             //Création du Layer de jeu
             gameLayer = new GameLayer();
-            this.AddChild(gameLayer);
+            AddChild(gameLayer);
         }
 
         /*

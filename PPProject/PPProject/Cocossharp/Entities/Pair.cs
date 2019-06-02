@@ -57,7 +57,7 @@ namespace PPProject.Cocossharp.Entities
         public void TurnOnVelocity()
         {
             UpdatePointDown();
-            moveAction = new CCMoveTo(5f, pointDown);
+            moveAction = new CCMoveTo(PositionY / 300f, pointDown);
             AddAction(moveAction);
            
         }
@@ -74,32 +74,28 @@ namespace PPProject.Cocossharp.Entities
         //Déplacement à gauche
         public void GoLeft()
         {
-           
             if (p1.GetColumn() > 0 && p2.GetColumn() > 0)
             {
                 StopAllActions();
-                //StopAction(GetActionState(moveAction.Tag));
                 p1.LowerColumn();
                 UpdatePointDown();
                 var coreAction = new CCMoveBy(0.025f, new CCPoint(-p1.GetSpriteSize(), 0));
-                moveAction = new CCMoveTo(5f, pointDown);
+                moveAction = new CCMoveTo(PositionY / 300f, pointDown);
                 CCSequence sequence = new CCSequence(coreAction, moveAction);
                 RunAction(sequence);
             }
-
-            
         }
 
         //Déplacement à droite
-        public void GoRight() {
+        public void GoRight()
+        {
             if (p1.GetColumn() < 5 && p2.GetColumn() < 5)
             {
                 StopAllActions();
-                //StopAction(GetActionState(moveAction.Tag));
                 p1.UpperColumn();
                 UpdatePointDown();
                 var coreAction = new CCMoveBy(0.025f, new CCPoint(p1.GetSpriteSize(), 0));
-                moveAction = new CCMoveTo(5f, pointDown);
+                moveAction = new CCMoveTo(PositionY / 300f, pointDown);
                 CCSequence sequence = new CCSequence(coreAction, moveAction);
                 RunAction(sequence);
             }
@@ -115,11 +111,18 @@ namespace PPProject.Cocossharp.Entities
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 0, 1);
                     p2.AddAction(coreAction);
                     placement--;
+                    UpdatePointDown();
+                    UpdatePointDown();
+                    moveAction = new CCMoveTo(PositionY / 300f, pointDown);
+                    RunAction(moveAction);
                     break;
                 case 4: //Gauche vers dessous
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 270, 1);
                     p2.AddAction(coreAction);
                     placement--;
+                    UpdatePointDown();
+                    moveAction = new CCMoveTo(PositionY / 300f, pointDown);
+                    RunAction(moveAction);
                     break;
                 case 1: //Dessus vers gauche
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 180, 1);
@@ -135,7 +138,6 @@ namespace PPProject.Cocossharp.Entities
                     break;
             }
             UpdatePointDown();
-
         }
 
         //Fonction tourner à droite
@@ -153,11 +155,17 @@ namespace PPProject.Cocossharp.Entities
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 270);
                     p2.AddAction(coreAction);
                     placement++;
+                    UpdatePointDown();
+                    moveAction = new CCMoveTo(PositionY/300f, pointDown);
+                    RunAction(moveAction);
                     break;
                 case 3: //Dessous vers gauche
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 180);
                     p2.AddAction(coreAction);
                     placement++;
+                    UpdatePointDown();
+                    moveAction = new CCMoveTo(PositionY / 300f, pointDown);
+                    RunAction(moveAction);
                     break;
                 case 4: //Gauche vers dessus
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 90);
@@ -177,6 +185,7 @@ namespace PPProject.Cocossharp.Entities
         public CCPoint GetPositionP1() { return p1.Position; }
         public CCPoint GetPositionP2() { return p2.Position; }
         public int GetPlacement() { return placement; }
+        public CCPoint GetPointDown() { return pointDown; }
         
 
         public void UpdateColumnP2()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using CocosSharp;
 using Microsoft.Xna.Framework;
 using PPProject.Cocossharp.Entities;
@@ -40,7 +41,6 @@ namespace PPProject.Cocossharp.Layers
                 /*
                  * Arrivée en bas
                  */
-                 
             }
         }
 

@@ -54,14 +54,6 @@ namespace PPProject.Cocossharp.Entities
             UpdatePointDown();
         }
 
-        public void TurnOnVelocity()
-        {
-            UpdatePointDown();
-            moveAction = new CCMoveTo(PositionY / 300f, pointDown);
-            AddAction(moveAction);
-           
-        }
-
         //Déplacement au sol
         public void GoDown()
         {
@@ -76,13 +68,11 @@ namespace PPProject.Cocossharp.Entities
         {
             if (p1.GetColumn() > 0 && p2.GetColumn() > 0)
             {
-                StopAllActions();
                 p1.LowerColumn();
                 UpdatePointDown();
+                UpdateColumnP2();
                 var coreAction = new CCMoveBy(0.025f, new CCPoint(-p1.GetSpriteSize(), 0));
-                moveAction = new CCMoveTo(PositionY / 300f, pointDown);
-                CCSequence sequence = new CCSequence(coreAction, moveAction);
-                RunAction(sequence);
+                AddAction(coreAction);
             }
         }
 
@@ -91,13 +81,11 @@ namespace PPProject.Cocossharp.Entities
         {
             if (p1.GetColumn() < 5 && p2.GetColumn() < 5)
             {
-                StopAllActions();
                 p1.UpperColumn();
                 UpdatePointDown();
+                UpdateColumnP2();
                 var coreAction = new CCMoveBy(0.025f, new CCPoint(p1.GetSpriteSize(), 0));
-                moveAction = new CCMoveTo(PositionY / 300f, pointDown);
-                CCSequence sequence = new CCSequence(coreAction, moveAction);
-                RunAction(sequence);
+                AddAction(coreAction);
             }
         }
 
@@ -112,17 +100,12 @@ namespace PPProject.Cocossharp.Entities
                     p2.AddAction(coreAction);
                     placement--;
                     UpdatePointDown();
-                    UpdatePointDown();
-                    moveAction = new CCMoveTo(PositionY / 300f, pointDown);
-                    RunAction(moveAction);
                     break;
                 case 4: //Gauche vers dessous
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 270, 1);
                     p2.AddAction(coreAction);
                     placement--;
                     UpdatePointDown();
-                    moveAction = new CCMoveTo(PositionY / 300f, pointDown);
-                    RunAction(moveAction);
                     break;
                 case 1: //Dessus vers gauche
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 180, 1);
@@ -138,6 +121,7 @@ namespace PPProject.Cocossharp.Entities
                     break;
             }
             UpdatePointDown();
+            UpdateColumnP2();
         }
 
         //Fonction tourner à droite
@@ -156,16 +140,12 @@ namespace PPProject.Cocossharp.Entities
                     p2.AddAction(coreAction);
                     placement++;
                     UpdatePointDown();
-                    moveAction = new CCMoveTo(PositionY/300f, pointDown);
-                    RunAction(moveAction);
                     break;
                 case 3: //Dessous vers gauche
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 180);
                     p2.AddAction(coreAction);
                     placement++;
                     UpdatePointDown();
-                    moveAction = new CCMoveTo(PositionY / 300f, pointDown);
-                    RunAction(moveAction);
                     break;
                 case 4: //Gauche vers dessus
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 90);
@@ -176,6 +156,7 @@ namespace PPProject.Cocossharp.Entities
                     break;       
             }
             UpdatePointDown();
+            UpdateColumnP2();
         }
       
 
@@ -207,10 +188,16 @@ namespace PPProject.Cocossharp.Entities
 
         public void UpdatePointDown()
         {
-            pointDown = grid.GetPointDown(p1.GetColumn());
+            Puyo p;
+            if(grid.GetPointDown(p1.GetColumn()).Y< grid.GetPointDown(p2.GetColumn()).Y)
+            {
+                p = p1;
+            }
+            else { p = p2; }
+            pointDown = grid.GetPointDown(p.GetColumn());
             if (placement == 3)
             {
-                pointDown = new CCPoint(pointDown.X, pointDown.Y + p1.GetSpriteSize());
+                pointDown = new CCPoint(pointDown.X, pointDown.Y + p.GetSpriteSize());
             }
         }
     }

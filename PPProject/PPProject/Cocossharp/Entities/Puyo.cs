@@ -39,7 +39,7 @@ namespace PPProject.Cocossharp.Entities
             byte[] b = new byte[4];
             rng.GetBytes(b);
             int n = BitConverter.ToInt32(b, 0);
-            n = n % 6;
+            n = n % 5;
             if (n <= 0)
             {
                 return RandomNumber();

@@ -76,6 +76,45 @@ namespace PPProject.Cocossharp.Entities
             AddChild(p1);
         }
 
+        public void AddPair(Pair pair)
+        {
+            Puyo p1, p2;
+            int x1, x2, y1, y2;
+            p1 = pair.GetP1();
+            p2 = pair.GetP2();
+            x1 = p1.GetColumn();
+            x2 = p2.GetColumn();            
+            if (pair.GetPlacement() == 3)
+            {
+                y2 = columns[x2];
+                pTab[x2, y2] = p2;
+                columns[x2]++;
+                p2.SetPosition(points[x2, y2]);
+                AddChild(p2);
+                y1 = columns[x1];
+                pTab[x1, y1] = p1;
+                columns[x1]++;
+                p1.SetPosition(points[x1, y1]);
+                AddChild(p1);
+            }
+            else
+            {
+                y1 = columns[x1];
+                pTab[x1, y1] = p1;
+                columns[x1]++;
+                p1.SetPosition(points[x1, y1]);
+                AddChild(p1);
+                y2 = columns[x2];
+                pTab[x2, y2] = p2;
+                columns[x2]++;
+                p2.SetPosition(points[x2, y2]);
+                AddChild(p2);
+            }
+            
+
+           
+        }
+
         //Donne le point de départ
         public CCPoint GetStartingPoint()
         {
@@ -105,6 +144,7 @@ namespace PPProject.Cocossharp.Entities
         {
             return (bounds.IntersectsRect(pair.GetP1().BoundingBoxTransformedToWorld) && bounds.IntersectsRect(pair.GetP2().BoundingBoxTransformedToWorld));
         }
+
 
     }
 }

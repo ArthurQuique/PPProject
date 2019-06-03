@@ -34,14 +34,38 @@ namespace PPProject.Cocossharp.Layers
                 /*
                  * Descente de la paire
                  */
+                p = new Puyo();
                 pair = new Pair(grid); //Création d'une nouvelle paire
                 AddChild(pair);
                 GetPairStarted(); //Place la paire au point de départ
-                pair.TurnOnVelocity();
-                /*
-                 * Arrivée en bas
-                 */
+                Schedule(ApplyVelocity); //Lance la paire
             }
+        }
+
+        //Fait descendre la Paire progressivement
+        private void ApplyVelocity(float timer)
+        {
+            if(pair.PositionY > pair.GetPointDown().Y)  //Si la paire est au-dessus du PointDown on la fait descendre
+            {
+                pair.PositionY-=5;
+            }
+            else //Sinon on gère l'arrêt
+            {
+                Unschedule(ApplyVelocity);
+                StopPair();
+            }
+        }
+
+        public void StopPair()
+        {
+            grid.AddPair(pair);
+            RemoveChild(pair);
+            pair = null;
+            if (!WatchGameOver())
+            {
+                StartGame();
+            }
+
         }
 
         //Regarder si il y a un game over (3è colonne remplie)

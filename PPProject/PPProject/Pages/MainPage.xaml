@@ -2,16 +2,77 @@
 <ContentPage NavigationPage.HasNavigationBar="False" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PPProject"
-             x:Class="PPProject.MainPage">
+             x:Class="PPProject.MainPage"
+             BackgroundImage="background.jpg">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Puyo Puyo!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-        <Button Text="Lancer le jeu" Clicked="Button_Clicked"/>
-    </StackLayout>
+    <FlexLayout Direction="Column">
 
+        <!-- Header -->
+        <Image Source="FSlogo.png"
+               Opacity="0.7"
+               Margin="20"/>
 
+        <!-- Body -->
+        <FlexLayout FlexLayout.Grow="1"
+                    Direction="Column"
+                    AlignItems="Center"
+                    JustifyContent="SpaceAround">
+
+            <!-- Content -->
+            <Button Text="Jouer" 
+                    Clicked="GamePage_Button_Clicked" 
+                    TextColor="White"
+                    FontSize="16"
+                    FontFamily="Orbitron-Regular.ttf#Orbitron-Regular"
+                    WidthRequest="150"
+                    HeightRequest="50"
+                    BackgroundColor="Transparent"/>
+            
+            <Button Text="Entrainement" 
+                    Clicked="Button_Clicked" 
+                    TextColor="White"
+                    FontSize="16"
+                    FontFamily="Orbitron-Regular.ttf#Orbitron-Regular"
+                    WidthRequest="150"
+                    HeightRequest="50"
+                    BackgroundColor="Transparent"/>
+
+            <Button Text="Règles" 
+                    Clicked="Button_Clicked" 
+                    TextColor="White"
+                    FontSize="16"
+                    FontFamily="Orbitron-Regular.ttf#Orbitron-Regular"
+                    WidthRequest="150"
+                    HeightRequest="50"
+                    BackgroundColor="Transparent"/>
+
+            <Button Text="Options" 
+                    Clicked="Button_Clicked" 
+                    TextColor="White"
+                    FontSize="16"
+                    FontFamily="Orbitron-Regular.ttf#Orbitron-Regular"
+                    WidthRequest="150"
+                    HeightRequest="50"
+                    BackgroundColor="Transparent"/>
+
+            <Button Text="Quitter" 
+                    Clicked="Button_Clicked" 
+                    TextColor="White"
+                    FontSize="16"
+                    FontFamily="Orbitron-Regular.ttf#Orbitron-Regular"
+                    WidthRequest="150"
+                    HeightRequest="50"
+                    BackgroundColor="Transparent"/>
+
+        </FlexLayout>
+
+        <!--FOOTER -->
+        <Label Text="COPYRIGHT BY FS"
+               TextColor="WhiteSmoke"
+               FontSize="30"
+               FontFamily="Orbitron-Regular.ttf#Orbitron-Regular"
+               HorizontalTextAlignment="Center" />
+
+    </FlexLayout>
 
 </ContentPage>

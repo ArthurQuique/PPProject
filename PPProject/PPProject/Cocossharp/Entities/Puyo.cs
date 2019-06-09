@@ -30,6 +30,19 @@ namespace PPProject.Cocossharp.Entities
             };
             AddChild(sprite);
         }
+
+        public Puyo(int i) : base()
+        {
+            int color = i;
+            String path = String.Format("puyo/puyo-{0}", color);
+            sprite = new CCSprite(path)
+            {
+                AnchorPoint = CCPoint.AnchorLowerLeft,
+                IsAntialiased = false,
+                Scale = 2.5f
+            };
+            AddChild(sprite);
+        }
         /*
          * Renvoie un nombre aléatoire
          */

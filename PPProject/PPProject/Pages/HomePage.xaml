@@ -3,30 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PPProject"
              x:Class="PPProject.HomePage"
-             BackgroundImage="background.jpg">
+             BackgroundImage="background.png">
 
     <FlexLayout Direction="Column">
-
-        <!-- Header -->
-
-              
 
         <!-- Body -->
         <FlexLayout FlexLayout.Grow="1"
                     Direction="Column"
-                    
                     JustifyContent="Start">
 
             <!-- Content -->
-
             <Image x:Name="logo"
-               Source="FSlogo.png"
-               Opacity="0"
-               Margin="30" />
-
+                   Source="FSlogo.png"
+                   Opacity="0"
+                   Margin="30" />
 
         </FlexLayout>
-
+        
         <!--FOOTER -->
         <Button Text="Cliquer ici pour continuer" 
                         Clicked="Button_Clicked" 

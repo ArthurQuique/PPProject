@@ -22,7 +22,7 @@ namespace PPProject
         private async void fadeTo()
         {
             logo.Opacity = 0;
-            await logo.FadeTo(1, 4500);
+            await logo.FadeTo(1, 3000);
         }
 
         private void Button_Clicked(object sender, EventArgs e)

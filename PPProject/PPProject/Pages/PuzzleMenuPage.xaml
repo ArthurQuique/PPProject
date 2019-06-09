@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage NavigationPage.HasNavigationBar="False" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PPProject"
+             x:Class="PPProject.PuzzleMenuPage"
+             BackgroundImage="settingsBackground.png">
+
+    <FlexLayout Direction="Column">
+
+        <!-- Header -->
+        <Image Source="FSlogo.png"
+               Opacity="0.7"
+               Margin="20"/>
+
+        <!-- Body -->
+        <FlexLayout FlexLayout.Grow="1"
+                    Direction="Column"
+                    AlignItems="Center"
+                    JustifyContent="SpaceAround">
+
+            <!-- Content -->
+            <Button Text="Puzzle 1" 
+                    Clicked="Puzzle1Page_Button_Clicked"
+                    TextColor="White"
+                    FontSize="24"
+                    FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
+                    CornerRadius="15"
+                    BackgroundColor="#BF5827F6"/>
+
+            <Button Text="Puzzle 2" 
+                    Clicked="Puzzle2Page_Button_Clicked"
+                    TextColor="White"
+                    FontSize="24"
+                    FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
+                    CornerRadius="15"
+                    BackgroundColor="#BF5827F6"/>
+
+        </FlexLayout>
+
+        <!--FOOTER -->
+        <Label Text="COPYRIGHT BY FS"
+               TextColor="WhiteSmoke"
+               FontSize="18"
+               FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
+               HorizontalTextAlignment="Center" />
+
+    </FlexLayout>
+</ContentPage>

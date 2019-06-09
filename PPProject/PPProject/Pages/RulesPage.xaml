@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage NavigationPage.HasNavigationBar="False" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PPProject"
+             x:Class="PPProject.RulesPage"
+             BackgroundImage="settingsBackground.png">
+
+    <FlexLayout Direction="Column">
+
+        <!-- Header -->
+        <Image Source="FSlogo.png"
+               Opacity="0.7"
+               Margin="20"/>
+
+        <!-- Body -->
+        <FlexLayout FlexLayout.Grow="1"
+                    Direction="Column"
+                    AlignItems="Center"
+                    JustifyContent="SpaceAround">
+
+            <!-- Content -->
+            <Label Text="Règles"
+                   TextColor="White"
+                   FontSize="24"/>
+
+        </FlexLayout>
+
+        <!--FOOTER -->
+        <Label Text="COPYRIGHT BY FS"
+               TextColor="WhiteSmoke"
+               FontSize="18"
+               FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
+               HorizontalTextAlignment="Center" />
+
+    </FlexLayout>
+
+</ContentPage>

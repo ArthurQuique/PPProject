@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PPProject"
              x:Class="PPProject.MainPage"
-             BackgroundImage="background.jpg">
+             BackgroundImage="background.png">
 
     <FlexLayout Direction="Column">
 
@@ -20,57 +20,52 @@
 
             <!-- Content -->
             <Button Text="Jouer" 
-                    Clicked="GamePage_Button_Clicked" 
+                    Clicked="GameMenuPage_Button_Clicked" 
                     TextColor="White"
-                    FontSize="16"
-                    FontFamily="Orbitron-Regular.ttf#Orbitron-Regular"
-                    WidthRequest="150"
-                    HeightRequest="50"
-                    BackgroundColor="Transparent"/>
+                    FontSize="20"
+                    FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
+                    CornerRadius="15"
+                    BackgroundColor="#BF5827F6"/>
             
             <Button Text="Entrainement" 
-                    Clicked="Button_Clicked" 
+                    Clicked="Training_Button_Clicked" 
                     TextColor="White"
-                    FontSize="16"
-                    FontFamily="Orbitron-Regular.ttf#Orbitron-Regular"
-                    WidthRequest="150"
-                    HeightRequest="50"
-                    BackgroundColor="Transparent"/>
+                    FontSize="20"
+                    FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
+                    CornerRadius="15"
+                    BackgroundColor="#BF5827F6"/>
 
             <Button Text="Règles" 
-                    Clicked="Button_Clicked" 
+                    Clicked="RulesPage_Button_Clicked" 
                     TextColor="White"
-                    FontSize="16"
-                    FontFamily="Orbitron-Regular.ttf#Orbitron-Regular"
-                    WidthRequest="150"
-                    HeightRequest="50"
-                    BackgroundColor="Transparent"/>
+                    FontSize="20"
+                    FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
+                    CornerRadius="15"
+                    BackgroundColor="#BF5827F6"/>
 
             <Button Text="Options" 
-                    Clicked="Button_Clicked" 
+                    Clicked="Settings_Button_Clicked" 
                     TextColor="White"
-                    FontSize="16"
-                    FontFamily="Orbitron-Regular.ttf#Orbitron-Regular"
-                    WidthRequest="150"
-                    HeightRequest="50"
-                    BackgroundColor="Transparent"/>
+                    FontSize="20"
+                    FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
+                    CornerRadius="15"
+                    BackgroundColor="#BF5827F6"/>
 
             <Button Text="Quitter" 
-                    Clicked="Button_Clicked" 
+                    Clicked="Quit_Button_Clicked" 
                     TextColor="White"
-                    FontSize="16"
-                    FontFamily="Orbitron-Regular.ttf#Orbitron-Regular"
-                    WidthRequest="150"
-                    HeightRequest="50"
-                    BackgroundColor="Transparent"/>
+                    FontSize="20"
+                    FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
+                    CornerRadius="15"
+                    BackgroundColor="#BF5827F6"/>
 
         </FlexLayout>
 
         <!--FOOTER -->
         <Label Text="COPYRIGHT BY FS"
                TextColor="WhiteSmoke"
-               FontSize="30"
-               FontFamily="Orbitron-Regular.ttf#Orbitron-Regular"
+               FontSize="18"
+               FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
                HorizontalTextAlignment="Center" />
 
     </FlexLayout>

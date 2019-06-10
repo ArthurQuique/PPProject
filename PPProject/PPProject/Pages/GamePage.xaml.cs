@@ -28,11 +28,11 @@ namespace PPProject
             /*
              * Commandes/Appels
              */
-            DownButton.Clicked += (sender, e) => gameScene.GetGameLayer().GetPair().GoDown();
-            LeftButton.Clicked += (sender, e) => gameScene.GetGameLayer().GetPair().GoLeft();
-            RightButton.Clicked += (sender, e) => gameScene.GetGameLayer().GetPair().GoRight();
-            SpinLButton.Clicked += (sender, e) => gameScene.GetGameLayer().GetPair().SpinL();
-            SpinRButton.Clicked += (sender, e) => gameScene.GetGameLayer().GetPair().SpinR();
+            DownButton.Clicked += (sender, e) => gameScene.GetGameLayer().GoDown();
+            LeftButton.Clicked += (sender, e) => gameScene.GetGameLayer().GoLeft();
+            RightButton.Clicked += (sender, e) => gameScene.GetGameLayer().GoRight();
+            SpinLButton.Clicked += (sender, e) => gameScene.GetGameLayer().SpinL();
+            SpinRButton.Clicked += (sender, e) => gameScene.GetGameLayer().SpinR();
         }
 
         /*

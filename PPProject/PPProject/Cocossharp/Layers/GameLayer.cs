@@ -15,8 +15,6 @@ namespace PPProject.Cocossharp.Layers
         private Puyo p;
         private Grid grid;
         private CCRect bounds;
-        // Define CCTileMap
-       // CCTileMap tileMap;
 
         
         public GameLayer()
@@ -45,9 +43,10 @@ namespace PPProject.Cocossharp.Layers
         //Fait descendre la Paire progressivement
         private void ApplyVelocity(float timer)
         {
+            pair.UpdatePointDown();
             if(pair.PositionY > pair.GetPointDown().Y)  //Si la paire est au-dessus du PointDown on la fait descendre
             {
-                pair.PositionY-=5;
+                pair.PositionY-=2.5f;
             }
             else //Sinon on gère l'arrêt
             {
@@ -61,6 +60,7 @@ namespace PPProject.Cocossharp.Layers
             grid.AddPair(pair);
             RemoveChild(pair);
             pair = null;
+            grid.Chain4Loop();
             if (!WatchGameOver())
             {
                 StartGame();
@@ -71,7 +71,7 @@ namespace PPProject.Cocossharp.Layers
         //Regarder si il y a un game over (3è colonne remplie)
         public bool WatchGameOver()
         {
-            if (grid.GetPuyoAtPoint(2, 12) != null)
+            if (grid.GetPuyoAtPoint(2, 11) != null)
             {
                 return true;
             }
@@ -111,8 +111,47 @@ namespace PPProject.Cocossharp.Layers
                 // Perform touch handling here
             }
         }
-        
-      
+
+        public void GoDown()
+        {
+            if(pair != null)
+            {
+                pair.GoDown();
+            }
+        }
+
+        public void GoLeft()
+        {
+            if (pair != null)
+            {
+                pair.GoLeft();
+            }
+        }
+
+        public void GoRight()
+        {
+            if (pair != null)
+            {
+                pair.GoRight();
+            }
+        }
+
+        public void SpinL()
+        {
+            if(pair != null)
+            {
+                pair.SpinL();
+            }
+        }
+
+        public void SpinR()
+        {
+            if(pair != null)
+            {
+                pair.SpinR();
+            }
+        }
+
         public Pair GetPair()
         {
             return pair;

@@ -14,14 +14,34 @@ namespace PPProject
             InitializeComponent();
         }
 
-        private void GamePage_Button_Clicked(object sender, EventArgs e)
+        private void GameMenuPage_Button_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new GamePage());
+            Navigation.PushAsync(new GameMenuPage());
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void Training_Button_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainPage());
+            Navigation.PushAsync(new TrainingPage());
         }
+
+        private void RulesPage_Button_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new RulesPage());
+        }
+
+        private void Settings_Button_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SettingsPage());
+        }
+
+        async void Quit_Button_Clicked(object sender, EventArgs e)
+        {
+           Boolean response = await DisplayAlert("", "Voulez-vous quitter le jeu ?", "Oui", "Non");
+           if(response)
+           {
+                Environment.Exit(1);
+           }
+        }
+
     }
 }

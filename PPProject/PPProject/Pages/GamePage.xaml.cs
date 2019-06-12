@@ -21,7 +21,7 @@ namespace PPProject
          */
         public GamePage ()
 		{
-			InitializeComponent ();
+			InitializeComponent();
             Content = ALayout;
             CreateGameView(GameLayout);
 

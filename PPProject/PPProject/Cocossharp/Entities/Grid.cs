@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PPProject.Cocossharp.Entities
 {
@@ -106,35 +107,43 @@ namespace PPProject.Cocossharp.Entities
                 x2 = p2.GetColumn();
                 if (pair.GetPlacement() == 3)
                 {
-                    y2 = columns[x2];
-                    pTab[x2, y2] = p2;
-                    columns[x2]++;
-                    p2.SetPosition(points[x2, y2]);
-                    AddChild(p2);
-                    if (y2 < HEI-1)
-                    {
-                        y1 = columns[x1];
-                        pTab[x1, y1] = p1;
-                        columns[x1]++;
-                        p1.SetPosition(points[x1, y1]);
-                        AddChild(p1);
-                    }                    
-                }
-                else
-                {
-                    y1 = columns[x1];
-                    pTab[x1, y1] = p1;
-                    columns[x1]++;
-                    p1.SetPosition(points[x1, y1]);
-                    AddChild(p1);
-                    if (y1 < HEI-1)
+                    if (!ColumnFull(x2))
                     {
                         y2 = columns[x2];
                         pTab[x2, y2] = p2;
                         columns[x2]++;
                         p2.SetPosition(points[x2, y2]);
                         AddChild(p2);
+                        if (!ColumnFull(x1))
+                        {
+                            y1 = columns[x1];
+                            pTab[x1, y1] = p1;
+                            columns[x1]++;
+                            p1.SetPosition(points[x1, y1]);
+                            AddChild(p1);
+                        }         
                     }
+                               
+                }
+                else
+                {
+                    if (!ColumnFull(x1))
+                    {
+                        y1 = columns[x1];
+                        pTab[x1, y1] = p1;
+                        columns[x1]++;
+                        p1.SetPosition(points[x1, y1]);
+                        AddChild(p1);
+                        if (!ColumnFull(x2))
+                        {
+                            y2 = columns[x2];
+                            pTab[x2, y2] = p2;
+                            columns[x2]++;
+                            p2.SetPosition(points[x2, y2]);
+                            AddChild(p2);
+                        }
+                    }
+                    
                     
                 }
                 UpdateColumnHitBoxes();
@@ -145,18 +154,15 @@ namespace PPProject.Cocossharp.Entities
         //Met à jour le tableau columns
         public void UpdateColumns()
         {
-            int nb = 0;
+            int j = 0;
             for(int i = 0; i < WID; i++)
             {
-                nb = 0;
-                for(int j = 0; j<HEI; j++)
+                j = 0;
+                while(!(pTab[i,j] is null))
                 {
-                    if(!(pTab[i,j] is null))
-                    {
-                        nb++;
-                    }
+                    j++;
                 }
-                columns[i] = nb;
+                columns[i] = j;
             }
         }
 
@@ -298,6 +304,7 @@ namespace PPProject.Cocossharp.Entities
                 else
                 {
                     ExecuteKillList();
+                    LawOfGravity();
                 }
             }
         }
@@ -374,8 +381,10 @@ namespace PPProject.Cocossharp.Entities
         //Grosse fonction pour faire tomber les Puyos
         public void LawOfGravity()
         {
-            
-
+            UpdateColumns();
+            FindFloatingPuyos();
+            BringPuyosDown();
+            UpdateColumns();
         }
 
         //Trouve les Puyo qui flottent 
@@ -394,6 +403,7 @@ namespace PPProject.Cocossharp.Entities
                     if(hole && !(pTab[i, j] is null))
                     {
                         floatingPuyos.Add(pTab[i, j]);
+                        pTab[i, j] = null;
                     }
                 } 
             }
@@ -402,7 +412,18 @@ namespace PPProject.Cocossharp.Entities
         //Fait descendre les Puyos flottants
         public void BringPuyosDown()
         {
-
+            if (floatingPuyos.Count > 0)
+            {
+                for(int i = 0; i < floatingPuyos.Count; i++)
+                {
+                    floatingPuyos[i].Position = points[floatingPuyos[i].GetColumn(),columns[floatingPuyos[i].GetColumn()]];
+                    pTab[floatingPuyos[i].GetColumn(), columns[floatingPuyos[i].GetColumn()]] = floatingPuyos[i];
+                    columns[floatingPuyos[i].GetColumn()]++;
+                }
+                
+                floatingPuyos.Clear();
+            }
+            
         }
 
         //Donne le point de départ
@@ -470,6 +491,15 @@ namespace PPProject.Cocossharp.Entities
                     }
                 }
             }
+        }
+
+        public bool ColumnFull(int c)
+        {
+            if (columns[c] == 12)
+            {
+                return true;
+            }
+            else return false;
         }
         
     }

@@ -23,7 +23,7 @@ namespace PPProject.Cocossharp.Entities
         public Puyo() : base()
         {
             color = RandomNumber();
-            String path = String.Format("puyo/puyo-{0}L", color);
+            String path = String.Format("puyo/puyo-{0}", color);
             sprite = new CCSprite(path)
             {
                 AnchorPoint = CCPoint.AnchorLowerLeft,

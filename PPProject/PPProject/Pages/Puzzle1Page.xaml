@@ -1,37 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage NavigationPage.HasNavigationBar="False" xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:PPProject"
-             x:Class="PPProject.Puzzle1Page"
-             BackgroundImage="settingsBackground.png">
+             x:Class="PPProject.Puzzle1Page">
+    <ContentPage.Content>
+        <AbsoluteLayout x:Name="ALayout">
+            <AbsoluteLayout x:Name="GameLayout"
+                       
+                AbsoluteLayout.LayoutBounds="0.1,0.1,0.6,0.6"
+               AbsoluteLayout.LayoutFlags="All">
+            </AbsoluteLayout>
 
-    <FlexLayout Direction="Column">
+            <Button x:Name="DownButton"
+                    Text="DOWN" 
+                    AbsoluteLayout.LayoutBounds="0.1,0.7,0.5,0.1"
+                    AbsoluteLayout.LayoutFlags="All"/>
 
-        <!-- Header -->
-        <Image Source="FSlogo.png"
-               Opacity="0.7"
-               Margin="20"/>
+            <Button x:Name="LeftButton"
+                    Text="L"
+                    AbsoluteLayout.LayoutBounds="0.1,0.9,0.2,0.1"
+                    AbsoluteLayout.LayoutFlags="All"/>
+            <Button x:Name="RightButton"
+                    Text="R"
+                    AbsoluteLayout.LayoutBounds="0.4,0.9,0.2,0.1"
+                    AbsoluteLayout.LayoutFlags="All"/>
 
-        <!-- Body -->
-        <FlexLayout FlexLayout.Grow="1"
-                    Direction="Column"
-                    AlignItems="Center"
-                    JustifyContent="SpaceAround">
-
-            <!-- Content -->
-            <Label Text="PAGE DU PUZZLE 1"
-                   TextColor="White"
-                   FontSize="24"/>
-
-        </FlexLayout>
-
-        <!--FOOTER -->
-        <Label Text="COPYRIGHT BY FS"
-               TextColor="WhiteSmoke"
-               FontSize="18"
-               FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
-               HorizontalTextAlignment="Center" />
-
-    </FlexLayout>
-
+            <Button x:Name="SpinLButton"
+                    Text="SL"
+                    AbsoluteLayout.LayoutBounds="0.7,0.95,0.2,0.1"
+                    AbsoluteLayout.LayoutFlags="All"/>
+            <Button x:Name="SpinRButton"
+                    Text="SR"
+                    AbsoluteLayout.LayoutBounds="0.9,0.85,0.2,0.1"
+                    AbsoluteLayout.LayoutFlags="All"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
 </ContentPage>

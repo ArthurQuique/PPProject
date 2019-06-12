@@ -11,17 +11,17 @@ using PPProject.Cocossharp.Scenes;
 
 namespace PPProject
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class GamePage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class GamePage : ContentPage
+    {
         GameScene gameScene;
-  
+
         /*
          * Constructeur
          */
-        public GamePage ()
-		{
-			InitializeComponent ();
+        public GamePage()
+        {
+            InitializeComponent();
             Content = ALayout;
             CreateGameView(GameLayout);
 
@@ -55,10 +55,10 @@ namespace PPProject
         {
             if (sender is CCGameView gameView)
             {
-                gameView.DesignResolution = new CCSizeI(600,1000);
+                gameView.DesignResolution = new CCSizeI(600, 1000);
                 gameScene = new GameScene(gameView);
-                gameView.RunWithScene(gameScene);                
+                gameView.RunWithScene(gameScene);
             }
         }
-	}
+    }
 }

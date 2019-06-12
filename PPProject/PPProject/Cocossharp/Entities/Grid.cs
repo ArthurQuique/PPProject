@@ -1,5 +1,6 @@
 ﻿using CocosSharp;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Text;
 
@@ -26,6 +27,11 @@ namespace PPProject.Cocossharp.Entities
             CreateGrid();
         }
 
+        public Grid(int n) : base()
+        {
+            p = new Puyo();
+            CreateGridPuzzle(n);
+        }
         /*
          * Création de la grille
          */
@@ -145,33 +151,33 @@ namespace PPProject.Cocossharp.Entities
             return (bounds.IntersectsRect(pair.GetP1().BoundingBoxTransformedToWorld) && bounds.IntersectsRect(pair.GetP2().BoundingBoxTransformedToWorld));
         }
 
-        public void CreateGridPuzzle(int i)
+        public void CreateGridPuzzle(int n)
         {
             WID = 6;
             HEI = 13;
-            
+
             points = new CCPoint[WID, HEI];
             CreatePoints();
 
             pTab = new Puyo[WID, HEI];
             columns = new int[6];
-            for(int i = 0; i < WID; i++)
+            for (int i = 0; i < WID; i++)
             {
                 columns[i] = 0;
             }
-            using (StreamReader sr = File.OpenText("Puzzle_"+i+".txt"))
+            using (StreamReader sr = File.OpenText("Puzzle_" + n + ".txt"))
             {
                 string line;
-                while((line = sr.ReadLine()) != null)
+                while ((line = sr.ReadLine()) != null)
                 {
-                    for (int j=0; j<HEI; j++)
+                    for (int j = 0; j < HEI; j++)
                     {
-                        for (int i=0;i<WID;i++)
+                        for (int i = 0; i < WID; i++)
                         {
                             if (line[i] != 0)
                             {
                                 p = new Puyo(line[i]);
-                                AddElement(j,i,p);
+                                AddElement(j, i, p);
                             }
                         }
                     }

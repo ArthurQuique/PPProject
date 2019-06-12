@@ -106,7 +106,6 @@
     <Folder Include="Assets\Content\sounds\" />
     <Folder Include="Resources\drawable-hdpi\" />
     <Folder Include="Resources\drawable-xhdpi\" />
-    <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
@@ -167,7 +166,7 @@
     <AndroidResource Include="Resources\drawable\FSlogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\settingsBackground.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\settingsBackground.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\regles.txt" />

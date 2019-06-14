@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using CocosSharp;
 using PPProject.CocosSharp.Actions;
@@ -12,12 +13,10 @@ namespace PPProject.Cocossharp.Entities
         private Puyo p1; //Puyo Central
         private Puyo p2; //Puyo Extérieur
         private Grid grid; //Grille
-        private CCEventListenerTouchAllAtOnce touchListener;
         private int placement; //Placement du Puyo 2 par rapport au Puyo 1 : 1:dessus 2:droite 3:dessous 4:gauche
-        private CCPoint pivot;
-        private CCMoveTo moveAction;
+        private CCPoint pivot; //Point autour duquel la paire tourne
         private CCPoint pointDown;
-        
+        private int puyoDown;
 
         /*
          * A commenter pour le produit final
@@ -58,7 +57,6 @@ namespace PPProject.Cocossharp.Entities
         public void GoDown()
         {
             UpdatePointDown();
-            StopAllActions();
             var coreAction = new CCMoveTo(0.1f, pointDown);
             AddAction(coreAction);
         }
@@ -96,6 +94,10 @@ namespace PPProject.Cocossharp.Entities
             switch (placement)
             {
                 case 3: //Dessous vers droite
+                    if (p1.GetColumn() == 5)
+                    {
+                        GoLeft();
+                    }
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 0, 1);
                     p2.AddAction(coreAction);
                     placement--;
@@ -108,9 +110,15 @@ namespace PPProject.Cocossharp.Entities
                     UpdatePointDown();
                     break;
                 case 1: //Dessus vers gauche
+                    if (p1.GetColumn() == 0)
+                    {
+                        GoRight();
+                    }
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 180, 1);
                     p2.AddAction(coreAction);
                     placement=4;
+                  
+                    
                     break;
                 case 2: //Droite vers dessus
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 90, 1);
@@ -131,6 +139,10 @@ namespace PPProject.Cocossharp.Entities
             switch (placement)
             {
                 case 1: //Dessus vers droite
+                    if (p1.GetColumn() == 5)
+                    {
+                        GoLeft();
+                    }
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 0);
                     p2.AddAction(coreAction);
                     placement++;
@@ -142,6 +154,10 @@ namespace PPProject.Cocossharp.Entities
                     UpdatePointDown();
                     break;
                 case 3: //Dessous vers gauche
+                    if (p1.GetColumn() == 0)
+                    {
+                        GoRight();
+                    }
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 180);
                     p2.AddAction(coreAction);
                     placement++;
@@ -168,7 +184,7 @@ namespace PPProject.Cocossharp.Entities
         public int GetPlacement() { return placement; }
         public CCPoint GetPointDown() { return pointDown; }
         
-
+        
         public void UpdateColumnP2()
         {
             switch (placement)
@@ -189,17 +205,56 @@ namespace PPProject.Cocossharp.Entities
         public void UpdatePointDown()
         {
             Puyo p;
-            if(grid.GetPointDown(p1.GetColumn()).Y< grid.GetPointDown(p2.GetColumn()).Y)
+            if(grid.GetPointDown(p1.GetColumn()).Y >= grid.GetPointDown(p2.GetColumn()).Y)
             {
                 p = p1;
+                puyoDown = 1;
+
             }
-            else { p = p2; }
-            pointDown = grid.GetPointDown(p.GetColumn());
+            else
+            {
+                p = p2;
+                puyoDown = 2;
+            }
+            if(placement == 2 && puyoDown == 2)
+            {
+                pointDown = grid.GetPointDown(p.GetColumn());
+                pointDown = new CCPoint(pointDown.X - p.ContentSize.Width, pointDown.Y);
+            }
+            else if(placement == 4 && puyoDown == 2)
+            {
+                pointDown = grid.GetPointDown(p.GetColumn());
+                pointDown = new CCPoint(pointDown.X + p.ContentSize.Width, pointDown.Y);
+            }
+            else
+            {
+                pointDown = grid.GetPointDown(p.GetColumn());
+            }
+            
             if (placement == 3)
             {
                 pointDown = new CCPoint(pointDown.X, pointDown.Y + p.GetSpriteSize());
             }
         }
+     
+        public int LowerColumn()
+        {
+            if(p1.GetColumn() <= p2.GetColumn())
+            {
+                return p1.GetColumn();
+            }
+            else
+            {
+                return p2.GetColumn();
+            }
+        }
+
+        public Pair LookALike()
+        {
+            Pair newPair = this;
+            return newPair;
+        }
+
     }
 
     

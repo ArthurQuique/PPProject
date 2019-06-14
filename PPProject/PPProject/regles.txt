@@ -1,0 +1,31 @@
+LE TABLEAU DE JEU
+
+Puyo Puyo est un Puzzle Game à l'instar de Tetris ou encore Columns. 
+Vous avez un espace de jeu rectangulaire avec des pièces qui arrivent par le haut. 
+Ces pièces sont représentées dans Puyo Puyo par une paire de Puyos qui descendent tout doucement vers le bas et qui s'arrêtent quand elles rencontrent quelque chose sur lesquelles elles peuvent se poser.
+
+
+LES CONTRÔLES
+
+Vous pouvez bien évidemment contrôler la paire de Puyos et effectuer un certain nombre d'actions dessus :
+=>  Les flèches de gauche et droite pour bouger votre paire de Puyos dans l'espace de jeu
+
+=>  La flèche du bas pour accélérer la chute de la paire de Puyos
+
+=>  2 boutons de rotation pour faire pivoter votre paire de Puyos. Un bouton permet de faire des rotations dans le sens horaire et l'autre dans le sens anti-horaire
+
+
+LES PUYOS
+
+Voici donc des Puyos, ils sont de différentes couleurs, certains ont l'air heureux, d'autres dépressifs, mais le plus important, c'est qu'ils peuvent s'éliminer si vous les regroupez par groupes de 4.
+Tiens, c'est rigolo, ça ressemble à des pièces de Tetris ! Enfin il faut savoir que vous pouvez en regrouper plus de 4 de la même couleur et qu'ils s'élimineront aussi. Bien entendu, ils ne flottent pas comme ça dans l'espace de jeu en réalité mais c'est bien de pouvoir un peu visualiser les différentes manières de regrouper des Puyos ensemble.
+
+
+LE GAME OVER
+
+Oui je sais, ça c'est moins rigolo mais bon, tout Puzzle Game a son Game Over. Pour Puyo Puyo, ça reste très classique et ça ressemble beaucoup à Tetris :
+Vous mourrez si la 3ème colonne (en partant de la gauche) de votre espace de jeu se remplit. Note : sur les jeux récents, cette case est indiquée par une croix rouge
+Vous pouvez charger l'écran de jeu ailleurs comme vous voulez, mais si cette case est remplie au moment où votre prochaine pièce doit arriver. C'est le Game Over... Autant vous dire que ce n'est pas très agréable mais que vous allez forcément y être confrontés donc autant être au courant tout de suite.
+
+
+

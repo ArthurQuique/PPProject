@@ -55,7 +55,7 @@ namespace PPProject
         {
             if (sender is CCGameView gameView)
             {
-                gameView.DesignResolution = new CCSizeI(600,1000);
+                gameView.DesignResolution = new CCSizeI(500,1000);
                 gameScene = new GameScene(gameView);
                 gameView.RunWithScene(gameScene);                
             }

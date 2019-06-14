@@ -27,17 +27,14 @@ namespace PPProject.Cocossharp.Layers
         //Démarrage du jeu
         public void StartGame()
         {
-            if (!WatchGameOver()) 
-            {
-                /*
-                 * Descente de la paire
-                 */
-                p = new Puyo();
-                pair = new Pair(grid); //Création d'une nouvelle paire
-                AddChild(pair);
-                GetPairStarted(); //Place la paire au point de départ
-                Schedule(ApplyVelocity); //Lance la paire
-            }
+             /*
+             * Descente de la paire
+             */
+            pair = new Pair(grid); //Création d'une nouvelle paire
+            AddChild(pair);
+            GetPairStarted(); //Place la paire au point de départ
+            Schedule(ApplyVelocity); //Lance la paire
+            
         }
 
         //Fait descendre la Paire progressivement
@@ -57,11 +54,11 @@ namespace PPProject.Cocossharp.Layers
 
         public void StopPair()
         {
-            grid.AddPair(pair);
-            RemoveChild(pair);
+            grid.AddPair(pair); //On ajoute les Puyos à la grille
+            RemoveChild(pair); //On supprime la Pair
             pair = null;
-            grid.Chain4Loop();
-            if (!WatchGameOver())
+            grid.Chain4Loop(); //On regarde les chaines de couleur
+            if (!WatchGameOver()) //On recommence le cycle si le jeu n'est pas terminé
             {
                 StartGame();
             }

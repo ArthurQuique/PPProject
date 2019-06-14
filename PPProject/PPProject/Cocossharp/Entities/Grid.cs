@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PPProject.Cocossharp.Entities
@@ -291,11 +292,11 @@ namespace PPProject.Cocossharp.Entities
 
         //Loop du Chain4
         public void Chain4Loop()
-        {
-            UpdateLinks();
+        { 
             bool res = true;
-            while (res)
+            while (res==true)
             {
+                UpdateLinks();
                 Chain4Scan();
                 if (killList.Count == 0)
                 {
@@ -422,6 +423,7 @@ namespace PPProject.Cocossharp.Entities
                 }
                 
                 floatingPuyos.Clear();
+                
             }
             
         }

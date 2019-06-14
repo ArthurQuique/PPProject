@@ -57,15 +57,7 @@ namespace PPProject.Cocossharp.Entities
             }
 
         }
-
-        /*
-         * Efface le Puyo de l'aire de jeu
-         */
-        public void Delete()
-        {
-            //removeFromPhysicsWorld()       
-        }
-
+        
         public float GetSpriteSize() { return sprite.ScaledContentSize.Width; }
         public void SetX(float x) { PositionX = x; }
         public void SetY(float y) { PositionY = y; }

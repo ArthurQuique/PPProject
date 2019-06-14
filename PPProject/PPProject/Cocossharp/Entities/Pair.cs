@@ -13,7 +13,6 @@ namespace PPProject.Cocossharp.Entities
         private Puyo p1; //Puyo Central
         private Puyo p2; //Puyo Extérieur
         private Grid grid; //Grille
-        private CCEventListenerTouchAllAtOnce touchListener;
         private int placement; //Placement du Puyo 2 par rapport au Puyo 1 : 1:dessus 2:droite 3:dessous 4:gauche
         private CCPoint pivot; //Point autour duquel la paire tourne
         private CCPoint pointDown;
@@ -95,6 +94,10 @@ namespace PPProject.Cocossharp.Entities
             switch (placement)
             {
                 case 3: //Dessous vers droite
+                    if (p1.GetColumn() == 5)
+                    {
+                        GoLeft();
+                    }
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 0, 1);
                     p2.AddAction(coreAction);
                     placement--;
@@ -151,6 +154,10 @@ namespace PPProject.Cocossharp.Entities
                     UpdatePointDown();
                     break;
                 case 3: //Dessous vers gauche
+                    if (p1.GetColumn() == 0)
+                    {
+                        GoRight();
+                    }
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 180);
                     p2.AddAction(coreAction);
                     placement++;

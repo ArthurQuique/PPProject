@@ -28,11 +28,11 @@ namespace PPProject.Cocossharp.Scenes
          */
         private void CreateBackground(CCGameView gameview, CCLayer backgroundLayer)
         {
-            var background = new CCSprite("background.png")
-            {
+            var background = new CCSprite("settingsBackground.png")
+            { 
                 AnchorPoint = new CCPoint(0, 0),
                 IsAntialiased = false,
-                ContentSize = new CCSizeI(500, 1000)
+                ContentSize = new CCSizeI(500, 1000),
             };
             backgroundLayer.AddChild(background);
         }

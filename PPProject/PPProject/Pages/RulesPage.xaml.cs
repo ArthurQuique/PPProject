@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,21 +17,51 @@ namespace PPProject
 		public RulesPage()
 		{
 			InitializeComponent();
-   
+            openRules();
 		}
 
-       // String fileContent;
+        private void rulesButton(object sender, EventArgs e)
+        {
+            openRules();
+        }
 
-       /* private void openRules()
+        private void openRules()
+        {
+
+            /*** Cherche le fichier et le place dans une variable ***/
+            var editor = new Label {};
+
+            var assembly = IntrospectionExtensions.GetTypeInfo(typeof(RulesPage)).Assembly;
+            Stream stream = assembly.GetManifestResourceStream("PPProject.regles.txt");
+
+            string text = "";
+            using (var reader = new StreamReader(stream))
             {
-            using (StreamReader sr = File.OpenText("regles.txt"))
-            {
-                string line;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    fileContent = sr.ReadToEnd();
-                }
+                text = reader.ReadToEnd();
             }
-        }*/
-	}
+       
+            /*** Style pour la police du fichier ***/
+            editor.Text = text;
+            editor.TextColor = Color.White;
+            editor.FontSize = 20;
+            editor.FontFamily = "Orbitron-Bold.ttf#Orbitron-Bold";
+
+            /*** Ecrit le fichier  sur la page de l'app ***/
+            Content = new ScrollView { // ScrollBar
+
+                Content = new FlexLayout
+                {
+
+                    Margin = 20,
+
+                    Children =
+                    {
+                        editor
+                    }
+
+                },
+            };
+        }
+
+    }
 }

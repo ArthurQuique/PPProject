@@ -1,37 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage NavigationPage.HasNavigationBar="False" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PPProject.GamePage">
+             x:Class="PPProject.GamePage"
+             BackgroundImage="GamePageBackground.png">
+    
     <ContentPage.Content>
-      <AbsoluteLayout x:Name="ALayout">
+        
+        <AbsoluteLayout x:Name="ALayout">
+            
             <AbsoluteLayout x:Name="GameLayout"
-                       
-                AbsoluteLayout.LayoutBounds="0.1,0.1,0.6,0.6"
-               AbsoluteLayout.LayoutFlags="All">
+                            AbsoluteLayout.LayoutBounds="0.1,0.1,0.65,0.6"
+                            AbsoluteLayout.LayoutFlags="All">
             </AbsoluteLayout>
 
             <Button x:Name="DownButton"
-                    Text="DOWN" 
-                    AbsoluteLayout.LayoutBounds="0.1,0.7,0.5,0.1"
+                    Text="↓"
+                    TextColor="White"
+                    FontSize="20"
+                    FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
+                    CornerRadius="15"
+                    BackgroundColor="#E65827F6"
+                    AbsoluteLayout.LayoutBounds="0.1,0.75,0.4,0.1"
                     AbsoluteLayout.LayoutFlags="All"/>
 
             <Button x:Name="LeftButton"
-                    Text="L"
+                    Text="←"
+                    TextColor="White"
+                    FontSize="20"
+                    FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
+                    CornerRadius="15"
+                    BackgroundColor="#E65827F6"
                     AbsoluteLayout.LayoutBounds="0.1,0.9,0.2,0.1"
                     AbsoluteLayout.LayoutFlags="All"/>
+
             <Button x:Name="RightButton"
-                    Text="R"
+                    Text="→"
+                    TextColor="White"
+                    FontSize="20"
+                    FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
+                    CornerRadius="15"
+                    BackgroundColor="#E65827F6"
                     AbsoluteLayout.LayoutBounds="0.4,0.9,0.2,0.1"
                     AbsoluteLayout.LayoutFlags="All"/>
 
-            <Button x:Name="SpinLButton"
-                    Text="SL"
-                    AbsoluteLayout.LayoutBounds="0.7,0.95,0.2,0.1"
-                    AbsoluteLayout.LayoutFlags="All"/>
             <Button x:Name="SpinRButton"
-                    Text="SR"
-                    AbsoluteLayout.LayoutBounds="0.9,0.85,0.2,0.1"
+                    Text="R"
+                    TextColor="White"
+                    FontSize="20"
+                    FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
+                    CornerRadius="15"
+                    BackgroundColor="#E65827F6"
+                    AbsoluteLayout.LayoutBounds="0.95,0.75,0.2,0.1"
                     AbsoluteLayout.LayoutFlags="All"/>
+            
+            <Button x:Name="SpinLButton"
+                    Text="L"
+                    TextColor="White"
+                    FontSize="20"
+                    FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
+                    CornerRadius="15"
+                    BackgroundColor="#E65827F6"
+                    AbsoluteLayout.LayoutBounds="0.8,0.9,0.2,0.1"
+                    AbsoluteLayout.LayoutFlags="All"/>
+
         </AbsoluteLayout>
+
     </ContentPage.Content>
 </ContentPage>

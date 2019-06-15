@@ -30,20 +30,30 @@ namespace PPProject.Cocossharp.Entities
             p1 = new Puyo();
             p2 = new Puyo();
             this.grid = grid;
-           
+            AddChild(p1);
+            AddChild(p2);
+            p2.Position = new CCPoint(p1.AnchorPointInPoints.X, p1.AnchorPointInPoints.Y + p1.GetSpriteSize()); //On commence avec le Puyo p2 au-dessus
+            p2.Position = new CCPoint(p1.AnchorPointInPoints.X, p1.AnchorPointInPoints.Y + p1.GetSpriteSize()); //On commence avec le Puyo p2 au-dessus
+            p1.SetColumn(2);
+            p2.SetColumn(2); //3e colonne
+            placement = 1; //Puyo 2 au-dessus
+            ContentSize = new CCSize(p1.ScaledContentSize.Width, p1.ScaledContentSize.Height * 2);
+            UpdatePointDown();
+        }
+
+        public Pair(Grid grid, int c1, int c2):base()
+        {
+            p1 = new Puyo(c1);
+            p2 = new Puyo(c2);
+            this.grid = grid;
             AddChild(p1);
             AddChild(p2);
             p2.Position = new CCPoint(p1.AnchorPointInPoints.X, p1.AnchorPointInPoints.Y + p1.GetSpriteSize()); //On commence avec le Puyo p2 au-dessus
             p1.SetColumn(2);
             p2.SetColumn(2); //3e colonne
             placement = 1; //Puyo 2 au-dessus
-            ContentSize = new CCSize(p1.ContentSize.Width, p1.ContentSize.Height * 2);
+            ContentSize = new CCSize(p1.ScaledContentSize.Width, p1.ScaledContentSize.Height * 2);
             UpdatePointDown();
-            collisionBox = new CCDrawNode();
-            collisionBox.DrawRect(BoundingBox, CCColor4B.Transparent, 2f, CCColor4B.Red);    
-            AddChild(collisionBox);
-            
-
         }
 
         public void SetPosition(CCPoint point)
@@ -219,12 +229,12 @@ namespace PPProject.Cocossharp.Entities
             if(placement == 2 && puyoDown == 2)
             {
                 pointDown = grid.GetPointDown(p.GetColumn());
-                pointDown = new CCPoint(pointDown.X - p.ContentSize.Width, pointDown.Y);
+                pointDown = new CCPoint(pointDown.X - p.ScaledContentSize.Width, pointDown.Y);
             }
             else if(placement == 4 && puyoDown == 2)
             {
                 pointDown = grid.GetPointDown(p.GetColumn());
-                pointDown = new CCPoint(pointDown.X + p.ContentSize.Width, pointDown.Y);
+                pointDown = new CCPoint(pointDown.X + p.ScaledContentSize.Width, pointDown.Y);
             }
             else
             {

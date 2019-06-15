@@ -167,13 +167,22 @@
     <AndroidResource Include="Resources\drawable\FSlogo.png" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\settingsBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
     <AndroidResource Include="Resources\drawable\GamePageBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Content\puzzle\Puzzle_1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\settingsBackground.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\settingsBackground.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\settingsBackground.png" />
+    <AndroidAsset Include="Assets\Content\frame.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

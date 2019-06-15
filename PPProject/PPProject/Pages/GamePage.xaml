@@ -20,7 +20,7 @@
                     FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
                     CornerRadius="15"
                     BackgroundColor="#E65827F6"
-                    AbsoluteLayout.LayoutBounds="0.1,0.75,0.4,0.1"
+                    AbsoluteLayout.LayoutBounds="0.1,0.75,0.5,0.1"
                     AbsoluteLayout.LayoutFlags="All"/>
 
             <Button x:Name="LeftButton"

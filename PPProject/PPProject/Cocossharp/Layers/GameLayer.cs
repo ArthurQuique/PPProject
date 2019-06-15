@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Timers;
 using CocosSharp;
 using Microsoft.Xna.Framework;
 using PPProject.Cocossharp.Entities;
+using System.Timers;
 
 namespace PPProject.Cocossharp.Layers
 {
@@ -12,26 +14,40 @@ namespace PPProject.Cocossharp.Layers
 
         // Define a label variable
         private Pair pair = null;
+        private Pair waitingPair = null;
         private Puyo p;
         private Grid grid;
         private CCRect bounds;
-
+        private CCSprite frame;
         
+        private static System.Timers.Timer aTimer;
+
         public GameLayer()
         {
             grid = new Grid();
+            frame = new CCSprite("frame.png");
+            frame.AnchorPoint = CCPoint.AnchorLowerLeft;
+            frame.Position = new CCPoint(0, 0);
+            frame.Scale = 0.85f;
+            waitingPair = new Pair(grid);
             AddChild(grid);
+            AddChild(frame);
+            //SetTimer();
             StartGame();
         }
 
         //Démarrage du jeu
         public void StartGame()
         {
-             /*
-             * Descente de la paire
-             */
-            pair = new Pair(grid); //Création d'une nouvelle paire
+            /*
+            * Descente de la paire
+            */
+            
+            pair = new Pair(grid, waitingPair.GetP1().GetColor(), waitingPair.GetP2().GetColor());
+            waitingPair = new Pair(grid);
+            waitingPair.Position = new CCPoint(507, 802);
             AddChild(pair);
+            AddChild(waitingPair);
             GetPairStarted(); //Place la paire au point de départ
             Schedule(ApplyVelocity); //Lance la paire
             
@@ -62,7 +78,21 @@ namespace PPProject.Cocossharp.Layers
             {
                 StartGame();
             }
+            else
+            {
+                GameOver();
+            }
 
+        }
+
+        public void GameOver()
+        {
+            RemoveAllChildren();
+            var label = new CCLabel("Game Over", " ", 80);
+            label.Color = CCColor3B.White;
+            label.PositionX = 250;
+            label.PositionY = 500;
+            AddChild(label);
         }
 
         //Regarder si il y a un game over (3è colonne remplie)
@@ -147,6 +177,20 @@ namespace PPProject.Cocossharp.Layers
             {
                 pair.SpinR();
             }
+        }
+
+
+        static void SetTimer()
+        {
+            int secondsToWait = 3; // Attendre 20 secondes
+
+            while (secondsToWait != 0)
+            {
+                Console.WriteLine("Temps: " + secondsToWait--);
+                Thread.Sleep(1000);
+            }
+
+            Console.Read();
         }
 
         public Pair GetPair()

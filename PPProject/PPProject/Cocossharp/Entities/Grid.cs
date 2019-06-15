@@ -1,7 +1,11 @@
 ﻿using CocosSharp;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,7 +22,6 @@ namespace PPProject.Cocossharp.Entities
         private CCRect[] columnHitBoxes;
         private CCPoint[,] points; //Tableau de points
         private CCRect bounds;
-        private CCDrawNode drawNode;
         private List<Puyo> killList;
         private List<Puyo> chain;
         private List<Puyo> floatingPuyos;
@@ -32,6 +35,11 @@ namespace PPProject.Cocossharp.Entities
             CreateGrid();
         }
 
+        public Grid(int n) : base()
+        {
+            p = new Puyo();
+            CreateGridPuzzle(n);
+        }
         /*
          * Création de la grille
          */
@@ -70,8 +78,8 @@ namespace PPProject.Cocossharp.Entities
          */
         public void CreatePoints()
         {
-            float tx = 0;
-            float ty = 0;
+            float tx = p.GetSpriteSize()/2 - 10;
+            float ty = p.GetSpriteSize() / 2;
             for (int i = 0; i < WID; i++) //Pour toute la largeur
             {
                 for (int j = 0; j < HEI; j++) //Pour toute la hauteur
@@ -79,10 +87,10 @@ namespace PPProject.Cocossharp.Entities
                     points[i, j] = new CCPoint(tx,ty); //Création des points
                     ty += p.GetSpriteSize();
                 }
-                ty = 0;
+                ty = p.GetSpriteSize() / 2;
                 tx += p.GetSpriteSize();
             }
-            bounds = new CCRect(0, 0, WID * p.GetSpriteSize(), HEI * p.GetSpriteSize()+22000);
+            bounds = new CCRect(p.GetSpriteSize() / 2 - 10, p.GetSpriteSize() / 2, WID * p.GetSpriteSize(), HEI * p.GetSpriteSize()+22000);
             
         }
 
@@ -458,6 +466,61 @@ namespace PPProject.Cocossharp.Entities
         {
             return (bounds.IntersectsRect(pair.GetP1().BoundingBoxTransformedToWorld) && bounds.IntersectsRect(pair.GetP2().BoundingBoxTransformedToWorld));
         }
+
+        public void CreateGridPuzzle(int n)
+        {
+            WID = 6;
+            HEI = 13;
+
+            points = new CCPoint[WID, HEI];
+            CreatePoints();
+
+            pTab = new Puyo[WID, HEI];
+            columns = new int[6];
+            for (int i = 0; i < WID; i++)
+            {
+                columns[i] = 0;
+            }
+
+            //string[] lines = System.IO.File.ReadAllLines(@"Puzzle_1.txt");
+            
+            /*foreach (string line in lines)
+            {
+                while (line != null)
+                {
+                    for (int j = 0; j < HEI; j++)
+                    {
+                        for (int i = 0; i < WID; i++)
+                        {
+                            if (line[i] != 0)
+                            {
+                                p = new Puyo(line[i]);
+                                AddElement(j, i, p);
+                            }
+                        }
+                    }
+                }
+            }*/
+            using (StreamReader sr = new StreamReader("C:/Users/T420s/Source/Repos/ArthurQuique/PPProject/PPProject/PPProject/Cocossharp/Entities/Puzzle_1.txt"))
+            {
+                /*string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    for (int j = 0; j < HEI; j++)
+                    {
+                        for (int i = 0; i < WID; i++)
+                        {
+                            if (line[i] != 0)
+                            {
+                                p = new Puyo(line[i]);
+                                AddElement(j, i, p);
+                            }
+                        }
+                    }
+                }*/
+            }
+        }
+
 
         public bool HitsTheLeftColumnOnSpin(Pair pair)
         {

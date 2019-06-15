@@ -19,15 +19,11 @@ namespace PPProject.Cocossharp.Layers
         private CCRect bounds;
         private static System.Timers.Timer aTimer;
 
-        // Define CCTileMap
-        // CCTileMap tileMap;
-
-
         public GameLayer()
         {
             grid = new Grid();
             AddChild(grid);
-            SetTimer();
+            //SetTimer();
             StartGame();
         }
 
@@ -69,7 +65,21 @@ namespace PPProject.Cocossharp.Layers
             {
                 StartGame();
             }
+            else
+            {
+                GameOver();
+            }
 
+        }
+
+        public void GameOver()
+        {
+            RemoveAllChildren();
+            var label = new CCLabel("Game Over", " ", 80);
+            label.Color = CCColor3B.White;
+            label.PositionX = 250;
+            label.PositionY = 500;
+            AddChild(label);
         }
 
         //Regarder si il y a un game over (3è colonne remplie)

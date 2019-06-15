@@ -13,7 +13,7 @@ namespace PPProject.Cocossharp.Scenes
         GameLayer gameLayer;
 
         public GameScene(CCGameView gameView) : base(gameView)
-        {          
+        {
             //Création de l'arrière-plan
             var backgroundLayer = new CCLayer();
             CreateBackground(gameView, backgroundLayer);
@@ -41,7 +41,6 @@ namespace PPProject.Cocossharp.Scenes
         {
             return gameLayer;
         }
-       
 
     }
 }

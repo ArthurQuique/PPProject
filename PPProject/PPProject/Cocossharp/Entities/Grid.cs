@@ -22,7 +22,6 @@ namespace PPProject.Cocossharp.Entities
         private CCRect[] columnHitBoxes;
         private CCPoint[,] points; //Tableau de points
         private CCRect bounds;
-        private CCDrawNode drawNode;
         private List<Puyo> killList;
         private List<Puyo> chain;
         private List<Puyo> floatingPuyos;

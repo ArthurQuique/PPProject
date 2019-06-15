@@ -14,9 +14,9 @@
             </AbsoluteLayout>
 
             <Button x:Name="DownButton"
-                    Text="↓"
+                    Text="▽"
                     TextColor="White"
-                    FontSize="20"
+                    FontSize="30"
                     FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
                     CornerRadius="15"
                     BackgroundColor="#E65827F6"
@@ -24,9 +24,9 @@
                     AbsoluteLayout.LayoutFlags="All"/>
 
             <Button x:Name="LeftButton"
-                    Text="←"
+                    Text="◁"
                     TextColor="White"
-                    FontSize="20"
+                    FontSize="22"
                     FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
                     CornerRadius="15"
                     BackgroundColor="#E65827F6"
@@ -34,9 +34,9 @@
                     AbsoluteLayout.LayoutFlags="All"/>
 
             <Button x:Name="RightButton"
-                    Text="→"
+                    Text="▷"
                     TextColor="White"
-                    FontSize="20"
+                    FontSize="22"
                     FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
                     CornerRadius="15"
                     BackgroundColor="#E65827F6"

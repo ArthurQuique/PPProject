@@ -36,7 +36,7 @@ namespace PPProject
 
         async void Quit_Button_Clicked(object sender, EventArgs e)
         {
-           Boolean response = await DisplayAlert("", "Voulez-vous quitter le jeu ?", "Oui", "Non");
+           bool response = await DisplayAlert("", "Voulez-vous quitter le jeu ?", "Oui", "Non");
            if(response)
            {
                 Environment.Exit(1);

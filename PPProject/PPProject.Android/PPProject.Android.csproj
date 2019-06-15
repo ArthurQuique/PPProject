@@ -119,9 +119,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\Background.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidAsset Include="Assets\Content\puyo\puyo-1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -171,9 +168,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\settingsBackground.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\Content\regles.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

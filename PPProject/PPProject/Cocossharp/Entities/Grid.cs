@@ -78,8 +78,8 @@ namespace PPProject.Cocossharp.Entities
          */
         public void CreatePoints()
         {
-            float tx = 0;
-            float ty = 0;
+            float tx = p.GetSpriteSize()/2 - 10;
+            float ty = p.GetSpriteSize() / 2;
             for (int i = 0; i < WID; i++) //Pour toute la largeur
             {
                 for (int j = 0; j < HEI; j++) //Pour toute la hauteur
@@ -87,10 +87,10 @@ namespace PPProject.Cocossharp.Entities
                     points[i, j] = new CCPoint(tx,ty); //Création des points
                     ty += p.GetSpriteSize();
                 }
-                ty = 0;
+                ty = p.GetSpriteSize() / 2;
                 tx += p.GetSpriteSize();
             }
-            bounds = new CCRect(0, 0, WID * p.GetSpriteSize(), HEI * p.GetSpriteSize()+22000);
+            bounds = new CCRect(p.GetSpriteSize() / 2 - 10, p.GetSpriteSize() / 2, WID * p.GetSpriteSize(), HEI * p.GetSpriteSize()+22000);
             
         }
 

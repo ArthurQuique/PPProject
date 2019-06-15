@@ -28,7 +28,7 @@ namespace PPProject.Cocossharp.Entities
             {
                 AnchorPoint = CCPoint.AnchorLowerLeft,
                 IsAntialiased = false,
-                Scale = 2.5f
+                Scale = 2.4f
             };
             links = new bool[4];
             for(int i = 0; i < 4; i++)
@@ -38,16 +38,21 @@ namespace PPProject.Cocossharp.Entities
             AddChild(sprite);
         }
 
-        public Puyo(int i) : base()
+        public Puyo(int x) : base()
         {
-            int color = i;
+            color = x;
             String path = String.Format("puyo/puyo-{0}", color);
             sprite = new CCSprite(path)
             {
                 AnchorPoint = CCPoint.AnchorLowerLeft,
                 IsAntialiased = false,
-                Scale = 2.5f
+                Scale = 2.4f
             };
+            links = new bool[4];
+            for (int i = 0; i < 4; i++)
+            {
+                links[i] = false;
+            }
             AddChild(sprite);
         }
         /*

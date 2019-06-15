@@ -14,15 +14,24 @@ namespace PPProject.Cocossharp.Layers
 
         // Define a label variable
         private Pair pair = null;
+        private Pair waitingPair = null;
         private Puyo p;
         private Grid grid;
         private CCRect bounds;
+        private CCSprite frame;
+        
         private static System.Timers.Timer aTimer;
 
         public GameLayer()
         {
             grid = new Grid();
+            frame = new CCSprite("frame.png");
+            frame.AnchorPoint = CCPoint.AnchorLowerLeft;
+            frame.Position = new CCPoint(0, 0);
+            frame.Scale = 0.85f;
+            waitingPair = new Pair(grid);
             AddChild(grid);
+            AddChild(frame);
             //SetTimer();
             StartGame();
         }
@@ -30,11 +39,15 @@ namespace PPProject.Cocossharp.Layers
         //Démarrage du jeu
         public void StartGame()
         {
-             /*
-             * Descente de la paire
-             */
-            pair = new Pair(grid); //Création d'une nouvelle paire
+            /*
+            * Descente de la paire
+            */
+            
+            pair = new Pair(grid, waitingPair.GetP1().GetColor(), waitingPair.GetP2().GetColor());
+            waitingPair = new Pair(grid);
+            waitingPair.Position = new CCPoint(507, 802);
             AddChild(pair);
+            AddChild(waitingPair);
             GetPairStarted(); //Place la paire au point de départ
             Schedule(ApplyVelocity); //Lance la paire
             

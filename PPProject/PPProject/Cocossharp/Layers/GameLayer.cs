@@ -15,6 +15,7 @@ namespace PPProject.Cocossharp.Layers
         // Define a label variable
         private Pair pair = null;
         private Pair waitingPair = null;
+        private Pair waitingPair2 = null;
         private Puyo p;
         private Grid grid;
         private CCRect bounds;
@@ -30,6 +31,7 @@ namespace PPProject.Cocossharp.Layers
             frame.Position = new CCPoint(0, 0);
             frame.Scale = 0.85f;
             waitingPair = new Pair(grid);
+            waitingPair2 = new Pair(grid);
             AddChild(grid);
             AddChild(frame);
             //SetTimer();
@@ -44,10 +46,13 @@ namespace PPProject.Cocossharp.Layers
             */
             
             pair = new Pair(grid, waitingPair.GetP1().GetColor(), waitingPair.GetP2().GetColor());
-            waitingPair = new Pair(grid);
+            waitingPair = new Pair(grid, waitingPair2.GetP1().GetColor(), waitingPair2.GetP2().GetColor());
+            waitingPair2 = new Pair(grid);
             waitingPair.Position = new CCPoint(507, 802);
+            waitingPair2.Position = new CCPoint(507, 625);
             AddChild(pair);
             AddChild(waitingPair);
+            AddChild(waitingPair2);
             GetPairStarted(); //Place la paire au point de départ
             Schedule(ApplyVelocity); //Lance la paire
             
@@ -87,7 +92,7 @@ namespace PPProject.Cocossharp.Layers
 
         public void GameOver()
         {
-            RemoveAllChildren();
+            RemoveChild(grid);
             var label = new CCLabel("Game Over", " ", 80);
             label.Color = CCColor3B.White;
             label.PositionX = 250;

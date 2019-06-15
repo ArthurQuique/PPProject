@@ -11,6 +11,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Cocossharp\Entities\Puzzle_1.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Cocossharp\Entities\Puzzle_1.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CocosSharp.Forms" Version="1.7.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.482894" />
   </ItemGroup>

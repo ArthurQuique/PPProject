@@ -3,6 +3,9 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
 
 namespace PPProject.Cocossharp.Entities
 {
@@ -165,10 +168,12 @@ namespace PPProject.Cocossharp.Entities
             {
                 columns[i] = 0;
             }
-            using (StreamReader sr = File.OpenText("Puzzle_" + n + ".txt"))
+
+            //string[] lines = System.IO.File.ReadAllLines(@"Puzzle_1.txt");
+            
+            /*foreach (string line in lines)
             {
-                string line;
-                while ((line = sr.ReadLine()) != null)
+                while (line != null)
                 {
                     for (int j = 0; j < HEI; j++)
                     {
@@ -182,6 +187,24 @@ namespace PPProject.Cocossharp.Entities
                         }
                     }
                 }
+            }*/
+            using (StreamReader sr = new StreamReader("C:/Users/T420s/Source/Repos/ArthurQuique/PPProject/PPProject/PPProject/Cocossharp/Entities/Puzzle_1.txt"))
+            {
+                /*string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    for (int j = 0; j < HEI; j++)
+                    {
+                        for (int i = 0; i < WID; i++)
+                        {
+                            if (line[i] != 0)
+                            {
+                                p = new Puyo(line[i]);
+                                AddElement(j, i, p);
+                            }
+                        }
+                    }
+                }*/
             }
         }
 

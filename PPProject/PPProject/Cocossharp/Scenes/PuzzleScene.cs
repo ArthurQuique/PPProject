@@ -19,7 +19,7 @@ namespace PPProject.Cocossharp.Scenes
             CreateBackground(gameView, backgroundLayer);
             AddChild(backgroundLayer);
             //Création du Layer de jeu
-            int n = 3;
+            int n = 1;
             puzzleLayer = new PuzzleLayer(n);
             AddChild(puzzleLayer);
         }

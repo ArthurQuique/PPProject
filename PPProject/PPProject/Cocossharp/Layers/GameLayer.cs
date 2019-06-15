@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Timers;
 using CocosSharp;
 using Microsoft.Xna.Framework;
 using PPProject.Cocossharp.Entities;
+using System.Timers;
 
 namespace PPProject.Cocossharp.Layers
 {
@@ -15,14 +17,17 @@ namespace PPProject.Cocossharp.Layers
         private Puyo p;
         private Grid grid;
         private CCRect bounds;
-        // Define CCTileMap
-       // CCTileMap tileMap;
+        private static System.Timers.Timer aTimer;
 
-        
+        // Define CCTileMap
+        // CCTileMap tileMap;
+
+
         public GameLayer()
         {
             grid = new Grid();
             AddChild(grid);
+            SetTimer();
             StartGame();
         }
 
@@ -111,8 +116,20 @@ namespace PPProject.Cocossharp.Layers
                 // Perform touch handling here
             }
         }
-        
-      
+
+        static void SetTimer()
+        {
+            int secondsToWait = 3; // Attendre 20 secondes
+
+            while (secondsToWait != 0)
+            {
+                Console.WriteLine("Temps: " + secondsToWait--);
+                Thread.Sleep(1000);
+            }
+
+            Console.Read();
+        }
+
         public Pair GetPair()
         {
             return pair;

@@ -167,10 +167,13 @@
     <AndroidResource Include="Resources\drawable\FSlogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\settingsBackground.png" />
+    <AndroidResource Include="Resources\drawable\GamePageBackground.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\GamePageBackground.png" />
+    <AndroidAsset Include="Assets\Content\settingsBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\settingsBackground.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

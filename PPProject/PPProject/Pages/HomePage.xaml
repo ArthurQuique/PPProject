@@ -21,7 +21,7 @@
         </FlexLayout>
         
         <!--FOOTER -->
-        <Button Text="Appuyer ici pour continuer" 
+        <Button Text="AppuyeZ ici pour continuer" 
                         Clicked="Button_Clicked" 
                         TextColor="White"
                         FontSize="20"

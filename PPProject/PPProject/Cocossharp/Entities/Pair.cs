@@ -74,7 +74,7 @@ namespace PPProject.Cocossharp.Entities
         //Déplacement à gauche
         public void GoLeft()
         {
-            if (p1.GetColumn() > 0 && p2.GetColumn() > 0)
+            if (p1.GetColumn() > 0 && p2.GetColumn() > 0 && !grid.HitsTheLeftColumnOnMove(this))
             {
                 p1.LowerColumn();
                 UpdatePointDown();
@@ -87,7 +87,7 @@ namespace PPProject.Cocossharp.Entities
         //Déplacement à droite
         public void GoRight()
         {
-            if (p1.GetColumn() < 5 && p2.GetColumn() < 5)
+            if (p1.GetColumn() < 5 && p2.GetColumn() < 5 && !grid.HitsTheRightColumnOnMove(this))
             {
                 p1.UpperColumn();
                 UpdatePointDown();
@@ -104,31 +104,45 @@ namespace PPProject.Cocossharp.Entities
             switch (placement)
             {
                 case 3: //Dessous vers droite
-                    if (p1.GetColumn() == 5)
+                    if (p1.GetColumn() == 5 || grid.HitsTheRightColumnOnSpin(this))
                     {
-                        GoLeft();
+                        if (p1.GetColumn() > 0 && p2.GetColumn() > 0 && !grid.HitsTheLeftColumnOnMove(this))
+                        {
+                            GoLeft();
+                            coreAction = new CCRotateAroundTo(0.025f, pivot, 0, 1);
+                            p2.AddAction(coreAction);
+                            placement--;
+                        }
                     }
-                    coreAction = new CCRotateAroundTo(0.025f, pivot, 0, 1);
-                    p2.AddAction(coreAction);
-                    placement--;
-                    UpdatePointDown();
+                    else
+                    {
+                        coreAction = new CCRotateAroundTo(0.025f, pivot, 0, 1);
+                        p2.AddAction(coreAction);
+                        placement--;
+                    }
                     break;
                 case 4: //Gauche vers dessous
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 270, 1);
                     p2.AddAction(coreAction);
                     placement--;
-                    UpdatePointDown();
                     break;
                 case 1: //Dessus vers gauche
-                    if (p1.GetColumn() == 0)
+                    if (p1.GetColumn() == 0 || grid.HitsTheLeftColumnOnSpin(this))
                     {
-                        GoRight();
+                        if (p1.GetColumn() < 5 && p2.GetColumn() < 5 && !grid.HitsTheRightColumnOnMove(this))
+                        {
+                            GoRight();
+                            coreAction = new CCRotateAroundTo(0.025f, pivot, 180, 1);
+                            p2.AddAction(coreAction);
+                            placement = 4;
+                        }
                     }
-                    coreAction = new CCRotateAroundTo(0.025f, pivot, 180, 1);
-                    p2.AddAction(coreAction);
-                    placement=4;
-                  
-                    
+                    else
+                    {
+                        coreAction = new CCRotateAroundTo(0.025f, pivot, 180, 1);
+                        p2.AddAction(coreAction);
+                        placement=4;
+                    }
                     break;
                 case 2: //Droite vers dessus
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 90, 1);
@@ -149,29 +163,46 @@ namespace PPProject.Cocossharp.Entities
             switch (placement)
             {
                 case 1: //Dessus vers droite
-                    if (p1.GetColumn() == 5)
+                    if (p1.GetColumn() == 5 || grid.HitsTheRightColumnOnSpin(this))
                     {
-                        GoLeft();
+                        if (p1.GetColumn() > 0 && p2.GetColumn() > 0 && !grid.HitsTheLeftColumnOnMove(this))
+                        {
+                            GoLeft();
+                            coreAction = new CCRotateAroundTo(0.025f, pivot, 0);
+                            p2.AddAction(coreAction);
+                            placement++;
+                        }
                     }
-                    coreAction = new CCRotateAroundTo(0.025f, pivot, 0);
-                    p2.AddAction(coreAction);
-                    placement++;
+                    else
+                    {
+                        coreAction = new CCRotateAroundTo(0.025f, pivot, 0);
+                        p2.AddAction(coreAction);
+                        placement++;
+                    }
+                    
                     break;
                 case 2: //Droite vers dessous
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 270);
                     p2.AddAction(coreAction);
                     placement++;
-                    UpdatePointDown();
                     break;
                 case 3: //Dessous vers gauche
-                    if (p1.GetColumn() == 0)
+                    if (p1.GetColumn() == 0 || grid.HitsTheLeftColumnOnSpin(this))
                     {
-                        GoRight();
+                        if (p1.GetColumn() < 5 && p2.GetColumn() < 5 && grid.HitsTheRightColumnOnMove(this))
+                        {
+                            GoRight();
+                            coreAction = new CCRotateAroundTo(0.025f, pivot, 180);
+                            p2.AddAction(coreAction);
+                            placement++;
+                        }
                     }
-                    coreAction = new CCRotateAroundTo(0.025f, pivot, 180);
-                    p2.AddAction(coreAction);
-                    placement++;
-                    UpdatePointDown();
+                    else
+                    {
+                        coreAction = new CCRotateAroundTo(0.025f, pivot, 180);
+                        p2.AddAction(coreAction);
+                        placement++;
+                    }
                     break;
                 case 4: //Gauche vers dessus
                     coreAction = new CCRotateAroundTo(0.025f, pivot, 90);

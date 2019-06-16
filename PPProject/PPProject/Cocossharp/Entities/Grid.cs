@@ -178,11 +178,12 @@ namespace PPProject.Cocossharp.Entities
         //Met à jour la hitbox des colonnes
         public void UpdateColumnHitBoxes()
         {
+            Puyo pu = new Puyo();
             for(int i = 0; i < WID; i++)
             {
                 columnHitBoxes[i] = new CCRect(points[i,0].X,
                                                 points[i,0].Y,
-                                                p.ContentSize.Width,
+                                                pu.GetSpriteSize(),
                                                 GetPointDown(i).Y);
             }
         }
@@ -521,12 +522,42 @@ namespace PPProject.Cocossharp.Entities
             }
         }
 
+        public bool HitsTheLeftColumnOnMove(Pair pair)
+        {
+            bool res = false;
+            float f1 = pair.GetP1().PositionWorldspace.X;
+            float f2 = pair.GetP2().PositionWorldspace.X;
+            f1 -= p.GetSpriteSize()/2;
+            f2 -= p.GetSpriteSize()/2;
+            if (columnHitBoxes[pair.GetP1().GetColumn() - 1].ContainsPoint(new CCPoint(f1, pair.GetP1().BoundingBoxTransformedToWorld.Origin.Y)) ||
+                columnHitBoxes[pair.GetP2().GetColumn() - 1].ContainsPoint(new CCPoint(f2, pair.GetP2().BoundingBoxTransformedToWorld.Origin.Y)))
+            {
+                res = true;
+            }
+            return res;
+        }
+
+        public bool HitsTheRightColumnOnMove(Pair pair)
+        {
+            bool res = false;
+            float f1 = pair.GetP1().PositionWorldspace.X;
+            float f2 = pair.GetP2().PositionWorldspace.X;
+            f1 += p.GetSpriteSize();
+            f2 += p.GetSpriteSize();
+            if (columnHitBoxes[pair.GetP1().GetColumn() + 1].ContainsPoint(new CCPoint(f1, pair.GetP1().BoundingBoxTransformedToWorld.Origin.Y)) ||
+                columnHitBoxes[pair.GetP2().GetColumn() + 1].ContainsPoint(new CCPoint(f2, pair.GetP2().BoundingBoxTransformedToWorld.Origin.Y)))
+            {
+                res = true;
+            }
+            return res;
+        }
 
         public bool HitsTheLeftColumnOnSpin(Pair pair)
         {
             bool res = false;
-            pair.GetP2().PositionX -= p.ContentSize.Width;
-            if (columnHitBoxes[pair.GetP1().GetColumn()-1].IntersectsRect(pair.GetP2().BoundingBoxTransformedToWorld))
+            float f = pair.GetP2().PositionWorldspace.X;
+            f -= p.GetSpriteSize()/2;
+            if (columnHitBoxes[pair.GetP1().GetColumn() - 1].ContainsPoint(new CCPoint(f, pair.GetP1().BoundingBoxTransformedToWorld.Origin.Y)))
             {
                 res = true;
             }
@@ -536,9 +567,11 @@ namespace PPProject.Cocossharp.Entities
         public bool HitsTheRightColumnOnSpin(Pair pair)
         {
             bool res = false;
-            pair.GetP2().PositionX += p.ContentSize.Width;
-            if (columnHitBoxes[pair.GetP1().GetColumn() + 1].IntersectsRect(pair.GetP2().BoundingBoxTransformedToWorld))
+            float f = pair.GetP2().PositionWorldspace.X;
+            f += p.GetSpriteSize();
+            if (columnHitBoxes[pair.GetP1().GetColumn() + 1].ContainsPoint(new CCPoint(f,pair.GetP1().BoundingBoxTransformedToWorld.Origin.Y)))
             {
+                
                 res = true;
             }
             return res;

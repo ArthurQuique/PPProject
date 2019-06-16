@@ -22,9 +22,8 @@ namespace PPProject
         /*
          * Constructeur
          */
-        public Puzzle1Page() 
+        public Puzzle1Page(int i) 
         {
-            int i = 1;
             puzzle = OpenPuzzle(i);
             InitializeComponent();
             Content = ALayout;

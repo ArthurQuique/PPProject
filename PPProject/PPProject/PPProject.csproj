@@ -44,12 +44,6 @@
     <Compile Update="Pages\GameMenuPage.xaml.cs">
       <DependentUpon>GameMenuPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Pages\Puzzle3Page.xaml.cs">
-      <DependentUpon>Puzzle3Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Pages\Puzzle2Page.xaml.cs">
-      <DependentUpon>Puzzle2Page.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Pages\Puzzle1Page.xaml.cs">
       <DependentUpon>Puzzle1Page.xaml</DependentUpon>
     </Compile>
@@ -78,12 +72,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\GameMenuPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Puzzle3Page.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Puzzle2Page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Puzzle1Page.xaml">

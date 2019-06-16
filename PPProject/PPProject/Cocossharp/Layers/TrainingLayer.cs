@@ -16,14 +16,11 @@ namespace PPProject.Cocossharp.Layers
         private Pair pair = null;
         private Pair waitingPair = null;
         private Pair waitingPair2 = null;
-        private Puyo p;
         private Grid grid;
         private CCRect bounds;
         private CCSprite frame;
         private int score;
         private CCLabel scoreLabel;
-        
-        private static System.Timers.Timer aTimer;
 
         public TrainingLayer()
         {

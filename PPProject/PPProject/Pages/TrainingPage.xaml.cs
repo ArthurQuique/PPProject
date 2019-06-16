@@ -14,7 +14,7 @@ namespace PPProject
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TrainingPage : ContentPage
     {
-        GameScene gameScene;
+        TrainingScene gameScene;
 
         /*
          * Constructeur
@@ -28,11 +28,11 @@ namespace PPProject
             /*
              * Commandes/Appels
              */
-            DownButton.Clicked += (sender, e) => gameScene.GetGameLayer().GoDown();
-            LeftButton.Clicked += (sender, e) => gameScene.GetGameLayer().GoLeft();
-            RightButton.Clicked += (sender, e) => gameScene.GetGameLayer().GoRight();
-            SpinLButton.Clicked += (sender, e) => gameScene.GetGameLayer().SpinL();
-            SpinRButton.Clicked += (sender, e) => gameScene.GetGameLayer().SpinR();
+            DownButton.Clicked += (sender, e) => gameScene.GetTrainingLayer().GoDown();
+            LeftButton.Clicked += (sender, e) => gameScene.GetTrainingLayer().GoLeft();
+            RightButton.Clicked += (sender, e) => gameScene.GetTrainingLayer().GoRight();
+            SpinLButton.Clicked += (sender, e) => gameScene.GetTrainingLayer().SpinL();
+            SpinRButton.Clicked += (sender, e) => gameScene.GetTrainingLayer().SpinR();
         }
 
         /*
@@ -56,7 +56,7 @@ namespace PPProject
             if (sender is CCGameView gameView)
             {
                 gameView.DesignResolution = new CCSizeI(600, 1000);
-                gameScene = new GameScene(gameView);
+                gameScene = new TrainingScene(gameView);
                 gameView.RunWithScene(gameScene);
             }
         }

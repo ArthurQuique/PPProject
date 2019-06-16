@@ -5,7 +5,6 @@ using System.Timers;
 using CocosSharp;
 using Microsoft.Xna.Framework;
 using PPProject.Cocossharp.Entities;
-using System.Timers;
 
 namespace PPProject.Cocossharp.Layers
 {
@@ -18,7 +17,6 @@ namespace PPProject.Cocossharp.Layers
         private Pair pair = null;
         private Pair waitingPair = null;
         private Pair waitingPair2 = null;
-        private Puyo p;
         private Grid grid;
         private CCRect bounds;
         private CCSprite frame;
@@ -26,9 +24,6 @@ namespace PPProject.Cocossharp.Layers
         private CCLabel scoreLabel;
         private string[] puzzle;
         private int[,] colorGrid;
-
-
-        private static System.Timers.Timer aTimer;
 
         public PuzzleLayer(string[] puzzle)
         {

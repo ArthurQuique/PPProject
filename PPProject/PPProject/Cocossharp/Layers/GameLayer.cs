@@ -15,7 +15,6 @@ namespace PPProject.Cocossharp.Layers
         private Pair pair = null;
         private Pair waitingPair = null;
         private Pair waitingPair2 = null;
-        private Puyo p;
         private Grid grid;
         private CCRect bounds;
         private CCSprite frame;
@@ -23,7 +22,7 @@ namespace PPProject.Cocossharp.Layers
 
         private CCLabel scoreLabel;
 
-        const float GAME_DURATION = 60f;
+        const float GAME_DURATION = 90f;
         float elapsedTime = 0;
         CCLabel countdown;
 
@@ -50,7 +49,7 @@ namespace PPProject.Cocossharp.Layers
             elapsedTime += dt;
             countdown = new CCLabel(String.Format("{0}", Math.Round(GAME_DURATION - elapsedTime, 0)), " ", 100);
             countdown.AnchorPoint = CCPoint.AnchorLowerLeft;
-            countdown.Position = new CCPoint(250, 750);
+            countdown.Position = new CCPoint(300, 750);
             AddChild(countdown);
             if(Math.Round(GAME_DURATION - elapsedTime, 0) == 0)
             {
@@ -121,6 +120,8 @@ namespace PPProject.Cocossharp.Layers
 
         public void GameOver()
         {
+            UnscheduleAll();
+            RemoveChild(countdown);
             RemoveChild(grid);
             var label = new CCLabel("Game Over\n", " ", 80);
             var label2 = new CCLabel("Votre score est de\n"+score, " ", 40,CCTextAlignment.Center);

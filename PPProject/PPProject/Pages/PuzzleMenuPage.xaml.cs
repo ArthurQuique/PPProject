@@ -16,22 +16,30 @@ namespace PPProject
 		{
 			InitializeComponent();
 
-            puzzle_1.Clicked += (sender, e) => Puzzle1Page_Button_Clicked(1);
+            puzzle_1.Clicked += (sender, e) => Puzzle1Page_Button_Clicked();
 
-            puzzle_2.Clicked += (sender, e) => Puzzle2Page_Button_Clicked(1);
+            puzzle_2.Clicked += (sender, e) => Puzzle2Page_Button_Clicked();
+
+            puzzle_3.Clicked += (sender, e) => Puzzle3Page_Button_Clicked();
 
         }
 
-        private void Puzzle1Page_Button_Clicked(int i)
+        private void Puzzle1Page_Button_Clicked()
         {
             
             Navigation.PushAsync(new Puzzle1Page());
         }
 
-        private void Puzzle2Page_Button_Clicked(int i)
+        private void Puzzle2Page_Button_Clicked()
         {
 
             Navigation.PushAsync(new Puzzle2Page());
+        }
+
+        private void Puzzle3Page_Button_Clicked()
+        {
+
+            Navigation.PushAsync(new Puzzle3Page());
         }
 
     }

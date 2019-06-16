@@ -35,6 +35,14 @@
                     CornerRadius="15"
                     BackgroundColor="#BF5827F6"/>
 
+            <Button x:Name="puzzle_3"
+                    Text="HellFire Facile 1" 
+                    TextColor="White"
+                    FontSize="24"
+                    FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
+                    CornerRadius="15"
+                    BackgroundColor="#BF5827F6"/>
+
         </FlexLayout>
 
         <!--FOOTER -->

@@ -300,13 +300,14 @@ namespace PPProject.Cocossharp.Entities
         }
 
         //Loop du Chain4
-        public void Chain4Loop()
+        public int Chain4Loop(int score)
         { 
             bool res = true;
+            int combo = 1;
             while (res==true)
             {
                 UpdateLinks();
-                Chain4Scan();
+                score += Chain4Scan() * combo;
                 if (killList.Count == 0)
                 {
                     res = false;
@@ -315,13 +316,16 @@ namespace PPProject.Cocossharp.Entities
                 {
                     ExecuteKillList();
                     LawOfGravity();
+                    combo++;
                 }
             }
+            return score;
         }
 
         //Vérifie les chaines de 4 ou plus et les ajoute à la KillList
-        public void Chain4Scan()
+        public int Chain4Scan()
         {
+            int score = 0;
             UnverifyAll();
             for(int i = 0; i < WID; i++)
             {
@@ -334,7 +338,7 @@ namespace PPProject.Cocossharp.Entities
                             Chain4(i, j);
                             if (chain.Count >= 4)
                             {
-                                
+                                score += chain.Count * 10;
                                 killList.AddRange(chain);
                             }
                             chain.Clear();
@@ -342,6 +346,7 @@ namespace PPProject.Cocossharp.Entities
                     }
                 }
             }
+            return score;
         }
         
         //Vérifie une chaine de 4

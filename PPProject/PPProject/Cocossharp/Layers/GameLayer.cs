@@ -20,11 +20,14 @@ namespace PPProject.Cocossharp.Layers
         private Grid grid;
         private CCRect bounds;
         private CCSprite frame;
+        private int score;
+        private CCLabel scoreLabel;
         
         private static System.Timers.Timer aTimer;
 
         public GameLayer()
         {
+            score = 0;
             grid = new Grid();
             frame = new CCSprite("frame.png");
             frame.AnchorPoint = CCPoint.AnchorLowerLeft;
@@ -44,7 +47,9 @@ namespace PPProject.Cocossharp.Layers
             /*
             * Descente de la paire
             */
-            
+            scoreLabel = new CCLabel(String.Format("Score: {0}", score), " ", 12);
+            scoreLabel.AnchorPoint = CCPoint.AnchorLowerLeft;
+            scoreLabel.Position = new CCPoint(27, 982);
             pair = new Pair(grid, waitingPair.GetP1().GetColor(), waitingPair.GetP2().GetColor());
             waitingPair = new Pair(grid, waitingPair2.GetP1().GetColor(), waitingPair2.GetP2().GetColor());
             waitingPair2 = new Pair(grid);
@@ -53,6 +58,8 @@ namespace PPProject.Cocossharp.Layers
             AddChild(pair);
             AddChild(waitingPair);
             AddChild(waitingPair2);
+
+            AddChild(scoreLabel);
             GetPairStarted(); //Place la paire au point de départ
             Schedule(ApplyVelocity); //Lance la paire
             
@@ -78,9 +85,10 @@ namespace PPProject.Cocossharp.Layers
             grid.AddPair(pair); //On ajoute les Puyos à la grille
             RemoveChild(pair); //On supprime la Pair
             pair = null;
-            grid.Chain4Loop(); //On regarde les chaines de couleur
+            score = grid.Chain4Loop(score); //On regarde les chaines de couleur
             if (!WatchGameOver()) //On recommence le cycle si le jeu n'est pas terminé
             {
+                RemoveChild(scoreLabel);
                 StartGame();
             }
             else
@@ -93,11 +101,15 @@ namespace PPProject.Cocossharp.Layers
         public void GameOver()
         {
             RemoveChild(grid);
-            var label = new CCLabel("Game Over", " ", 80);
+            var label = new CCLabel("Game Over\n", " ", 80);
+            var label2 = new CCLabel("Votre score est de\n"+score, " ", 40,CCTextAlignment.Center);
             label.Color = CCColor3B.White;
             label.PositionX = 250;
             label.PositionY = 500;
+            label2.PositionX = 250;
+            label2.PositionY = 300;
             AddChild(label);
+            AddChild(label2);
         }
 
         //Regarder si il y a un game over (3è colonne remplie)

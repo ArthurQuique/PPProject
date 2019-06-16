@@ -18,7 +18,7 @@ namespace PPProject
 
             puzzle_1.Clicked += (sender, e) => Puzzle1Page_Button_Clicked(1);
 
-            puzzle_2.Clicked += (sender, e) => Puzzle2Page_Button_Clicked(1);
+            puzzle_2.Clicked += (sender, e) => Puzzle2Page_Button_Clicked(2);
 
         }
 

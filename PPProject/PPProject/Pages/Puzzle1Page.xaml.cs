@@ -33,11 +33,11 @@ namespace PPProject
             /*
              * Commandes/Appels
              */
-            DownButton.Clicked += (sender, e) => gameScene.GetPuzzleLayer().GetPair().GoDown();
-            LeftButton.Clicked += (sender, e) => gameScene.GetPuzzleLayer().GetPair().GoLeft();
-            RightButton.Clicked += (sender, e) => gameScene.GetPuzzleLayer().GetPair().GoRight();
-            SpinLButton.Clicked += (sender, e) => gameScene.GetPuzzleLayer().GetPair().SpinL();
-            SpinRButton.Clicked += (sender, e) => gameScene.GetPuzzleLayer().GetPair().SpinR();
+            DownButton.Clicked += (sender, e) => gameScene.GetPuzzleLayer().GoDown();
+            LeftButton.Clicked += (sender, e) => gameScene.GetPuzzleLayer().GoLeft();
+            RightButton.Clicked += (sender, e) => gameScene.GetPuzzleLayer().GoRight();
+            SpinLButton.Clicked += (sender, e) => gameScene.GetPuzzleLayer().SpinL();
+            SpinRButton.Clicked += (sender, e) => gameScene.GetPuzzleLayer().SpinR();
         }
 
         /*
@@ -69,7 +69,8 @@ namespace PPProject
         private string[] OpenPuzzle(int i)
         {
             var assembly = IntrospectionExtensions.GetTypeInfo(typeof(RulesPage)).Assembly;
-            Stream stream = assembly.GetManifestResourceStream("PPProject.Cocossharp.Puzzles.Puzzle_1.txt");
+            string puzzleName = String.Format("PPProject.Cocossharp.Puzzles.Puzzle_{0}.txt", i);
+            Stream stream = assembly.GetManifestResourceStream(puzzleName);
 
             string[] text;
             using (var reader = new StreamReader(stream))

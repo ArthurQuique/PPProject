@@ -5,7 +5,6 @@ using System.Timers;
 using CocosSharp;
 using Microsoft.Xna.Framework;
 using PPProject.Cocossharp.Entities;
-using System.Timers;
 
 namespace PPProject.Cocossharp.Layers
 {
@@ -21,9 +20,13 @@ namespace PPProject.Cocossharp.Layers
         private CCRect bounds;
         private CCSprite frame;
         private int score;
+
         private CCLabel scoreLabel;
-        
-        private static System.Timers.Timer aTimer;
+
+        const float GAME_DURATION = 5f;
+        float elapsedTime = 0;
+        CCLabel countdown;
+
 
         public GameLayer()
         {
@@ -37,8 +40,24 @@ namespace PPProject.Cocossharp.Layers
             waitingPair2 = new Pair(grid);
             AddChild(grid);
             AddChild(frame);
-            //SetTimer();
             StartGame();
+            Schedule(updateTimer);
+        }
+
+        public void updateTimer(float dt)
+        {
+            RemoveChild(countdown);
+            elapsedTime += dt;
+            countdown = new CCLabel(String.Format("{0}", Math.Round(GAME_DURATION - elapsedTime, 0)), " ", 100);
+            countdown.AnchorPoint = CCPoint.AnchorLowerLeft;
+            countdown.Position = new CCPoint(250, 750);
+            AddChild(countdown);
+            if(Math.Round(GAME_DURATION - elapsedTime, 0) == 0)
+            {
+                UnscheduleAll();
+                RemoveChild(pair);
+                GameOver();
+            }
         }
 
         //Démarrage du jeu
@@ -47,7 +66,7 @@ namespace PPProject.Cocossharp.Layers
             /*
             * Descente de la paire
             */
-            scoreLabel = new CCLabel(String.Format("Score: {0}", score), " ", 12);
+            scoreLabel = new CCLabel(String.Format("Score : {0}", score), " ", 12);
             scoreLabel.AnchorPoint = CCPoint.AnchorLowerLeft;
             scoreLabel.Position = new CCPoint(27, 982);
             pair = new Pair(grid, waitingPair.GetP1().GetColor(), waitingPair.GetP2().GetColor());
@@ -69,6 +88,7 @@ namespace PPProject.Cocossharp.Layers
         private void ApplyVelocity(float timer)
         {
             pair.UpdatePointDown();
+           
             if(pair.PositionY > pair.GetPointDown().Y)  //Si la paire est au-dessus du PointDown on la fait descendre
             {
                 pair.PositionY-=2.5f;
@@ -79,6 +99,7 @@ namespace PPProject.Cocossharp.Layers
                 StopPair();
             }
         }
+
 
         public void StopPair()
         {
@@ -110,6 +131,8 @@ namespace PPProject.Cocossharp.Layers
             label2.PositionY = 300;
             AddChild(label);
             AddChild(label2);
+            RemoveChild(waitingPair);
+            RemoveChild(waitingPair2);
         }
 
         //Regarder si il y a un game over (3è colonne remplie)
@@ -139,22 +162,8 @@ namespace PPProject.Cocossharp.Layers
             // Use the bounds to layout the positioning of our drawable assets
             bounds = VisibleBoundsWorldspace;
             ContentSize = new CCSize(bounds.Size.Width, bounds.Size.Height);
-            
-            // Register for touch events
-            var touchListener = new CCEventListenerTouchAllAtOnce
-            {
-                OnTouchesEnded = OnTouchesEnded
-            };
-            AddEventListener(touchListener, this);
         }
         
-        private void OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
-        {
-            if (touches.Count > 0)
-            {
-                // Perform touch handling here
-            }
-        }
 
         public void GoDown()
         {

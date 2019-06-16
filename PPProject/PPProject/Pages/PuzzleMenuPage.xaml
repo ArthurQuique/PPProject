@@ -19,16 +19,16 @@
                     JustifyContent="SpaceAround">
 
             <!-- Content -->
-            <Button Text="Puzzle 1" 
-                    Clicked="Puzzle1Page_Button_Clicked"
+            <Button x:Name="puzzle_1"
+                    Text="Puzzle 1" 
                     TextColor="White"
                     FontSize="24"
                     FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
                     CornerRadius="15"
                     BackgroundColor="#BF5827F6"/>
 
-            <Button Text="Puzzle 2" 
-                    Clicked="Puzzle2Page_Button_Clicked"
+            <Button x:Name="puzzle_2"
+                    Text="Puzzle 2" 
                     TextColor="White"
                     FontSize="24"
                     FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"

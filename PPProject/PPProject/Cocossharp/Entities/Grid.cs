@@ -35,10 +35,10 @@ namespace PPProject.Cocossharp.Entities
             CreateGrid();
         }
 
-        public Grid(int n) : base()
+        public Grid(int[,] colorGrid) : base()
         {
             p = new Puyo();
-            CreateGridPuzzle(n);
+            CreateGridPuzzle(colorGrid);
         }
         /*
          * Création de la grille
@@ -69,8 +69,48 @@ namespace PPProject.Cocossharp.Entities
             {
                 columns[i] = 0;
             }
-            // AddChild(drawNode);
 
+        }
+
+        public void CreateGridPuzzle(int[,] colorGrid)
+        {
+            WID = 6;
+            HEI = 13;
+
+            points = new CCPoint[WID, HEI];
+            CreatePoints();
+
+            pTab = new Puyo[WID, HEI];
+            for (int i = 0; i < WID; i++)
+            {
+                for (int j = 0; j < HEI; j++)
+                {
+                    pTab[i, j] = null;
+                }
+            }
+            columns = new int[WID];
+            columnHitBoxes = new CCRect[WID];
+            killList = new List<Puyo>();
+            chain = new List<Puyo>();
+            floatingPuyos = new List<Puyo>();
+
+            for (int i = 0; i < WID; i++)
+            {
+                columns[i] = 0;
+            }
+
+            for (int i = 0; i < WID; i++)
+            {
+                for (int j = 0; j < HEI; j++)
+                {
+                    if (colorGrid[i, j] != 0)
+                    {
+                        AddElement(i, j, new Puyo(colorGrid[i, j]));
+                    }
+                }
+            }
+            UpdateLinks();
+            UpdateColumnHitBoxes();
         }
 
         /*
@@ -471,60 +511,6 @@ namespace PPProject.Cocossharp.Entities
         public bool IsInBounds(Pair pair)
         {
             return (bounds.IntersectsRect(pair.GetP1().BoundingBoxTransformedToWorld) && bounds.IntersectsRect(pair.GetP2().BoundingBoxTransformedToWorld));
-        }
-
-        public void CreateGridPuzzle(int n)
-        {
-            WID = 6;
-            HEI = 13;
-
-            points = new CCPoint[WID, HEI];
-            CreatePoints();
-
-            pTab = new Puyo[WID, HEI];
-            columns = new int[6];
-            for (int i = 0; i < WID; i++)
-            {
-                columns[i] = 0;
-            }
-
-            //string[] lines = System.IO.File.ReadAllLines(@"Puzzle_1.txt");
-            
-            /*foreach (string line in lines)
-            {
-                while (line != null)
-                {
-                    for (int j = 0; j < HEI; j++)
-                    {
-                        for (int i = 0; i < WID; i++)
-                        {
-                            if (line[i] != 0)
-                            {
-                                p = new Puyo(line[i]);
-                                AddElement(j, i, p);
-                            }
-                        }
-                    }
-                }
-            }*/
-            using (StreamReader sr = new StreamReader("C:/Users/T420s/Source/Repos/ArthurQuique/PPProject/PPProject/PPProject/Cocossharp/Entities/Puzzle_1.txt"))
-            {
-                /*string line;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    for (int j = 0; j < HEI; j++)
-                    {
-                        for (int i = 0; i < WID; i++)
-                        {
-                            if (line[i] != 0)
-                            {
-                                p = new Puyo(line[i]);
-                                AddElement(j, i, p);
-                            }
-                        }
-                    }
-                }*/
-            }
         }
 
         public bool HitsTheLeftColumnOnMove(Pair pair)

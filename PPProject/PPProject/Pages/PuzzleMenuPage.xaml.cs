@@ -15,16 +15,15 @@ namespace PPProject
 		public PuzzleMenuPage()
 		{
 			InitializeComponent();
-		}
 
-        private void Puzzle1Page_Button_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new Puzzle1Page());
+            puzzle_1.Clicked += (sender, e) => Puzzle1Page_Button_Clicked(1);
+
         }
 
-        private void Puzzle2Page_Button_Clicked(object sender, EventArgs e)
+        private void Puzzle1Page_Button_Clicked(int i)
         {
-            Navigation.PushAsync(new Puzzle2Page());
+            
+            Navigation.PushAsync(new Puzzle1Page(i));
         }
 
     }

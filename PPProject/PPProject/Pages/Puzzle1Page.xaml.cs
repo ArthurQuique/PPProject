@@ -8,6 +8,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using CocosSharp;
 using PPProject.Cocossharp.Scenes;
+using System.Reflection;
+using System.IO;
 
 namespace PPProject
 {
@@ -15,12 +17,14 @@ namespace PPProject
     public partial class Puzzle1Page : ContentPage
     {
         PuzzleScene gameScene;
+        string[] puzzle;
 
         /*
          * Constructeur
          */
-        public Puzzle1Page() 
+        public Puzzle1Page(int i) 
         {
+            puzzle = OpenPuzzle(i);
             InitializeComponent();
             Content = ALayout;
             CreateGameView(GameLayout);
@@ -56,9 +60,22 @@ namespace PPProject
             if (sender is CCGameView gameView)
             {
                 gameView.DesignResolution = new CCSizeI(600, 1000);
-                gameScene = new PuzzleScene(gameView);
+                gameScene = new PuzzleScene(gameView, puzzle);
                 gameView.RunWithScene(gameScene);
             }
+        }
+
+        private string[] OpenPuzzle(int i)
+        {
+            var assembly = IntrospectionExtensions.GetTypeInfo(typeof(RulesPage)).Assembly;
+            Stream stream = assembly.GetManifestResourceStream("PPProject.Cocossharp.Puzzles.Puzzle_1.txt");
+
+            string[] text;
+            using (var reader = new StreamReader(stream))
+            {
+                text = reader.ReadToEnd().Split(')');
+            }
+            return text;
         }
     }
 }

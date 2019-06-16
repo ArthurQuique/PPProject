@@ -130,9 +130,6 @@
     <AndroidAsset Include="Assets\Content\puyo\puyo-4.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\puyo\puyo-5.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidAsset Include="Assets\Content\tilemaps\classic puyos.png" />
   </ItemGroup>
   <ItemGroup>

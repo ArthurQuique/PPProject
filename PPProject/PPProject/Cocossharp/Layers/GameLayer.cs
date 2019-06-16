@@ -23,7 +23,7 @@ namespace PPProject.Cocossharp.Layers
 
         private CCLabel scoreLabel;
 
-        const float GAME_DURATION = 5f;
+        const float GAME_DURATION = 60f;
         float elapsedTime = 0;
         CCLabel countdown;
 

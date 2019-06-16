@@ -25,7 +25,7 @@ namespace PPProject
         private void PlaySong()
         {
             var assembly = typeof(HomePage).GetTypeInfo().Assembly;
-            Stream audioFile = assembly.GetManifestResourceStream("PPProject.test.mp3");
+            Stream audioFile = assembly.GetManifestResourceStream("PPProject.Stealer.mp3");
             var audio = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
             audio.Load(audioFile);
             audio.Play();
@@ -34,7 +34,7 @@ namespace PPProject
         private void StopSong()
         {
             var assembly = typeof(HomePage).GetTypeInfo().Assembly;
-            Stream audioFile = assembly.GetManifestResourceStream("PPProject.test.mp3");
+            Stream audioFile = assembly.GetManifestResourceStream("PPProject.Stealer.mp3");
             var audio = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
             audio.Load(audioFile);
             audio.Stop();

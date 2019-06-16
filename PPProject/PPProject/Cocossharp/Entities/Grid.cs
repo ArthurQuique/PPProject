@@ -98,14 +98,14 @@ namespace PPProject.Cocossharp.Entities
             {
                 columns[i] = 0;
             }
-
-            for (int i = 0; i < WID; i++)
+            for (int j = 0; j < HEI; j++)
             {
-                for (int j = 0; j < HEI; j++)
+                for (int i = 0; i < WID; i++)
                 {
-                    if (colorGrid[i, j] != 0)
+                    if (colorGrid[i,j] != 0)
                     {
-                        AddElement(i, j, new Puyo(colorGrid[i, j]));
+                        p = new Puyo(colorGrid[i,j]);
+                        AddElement(i, j, p);
                     }
                 }
             }

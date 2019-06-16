@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <None Remove="Cocossharp\Puzzles\Puzzle_1.txt" />
+    <None Remove="Cocossharp\Puzzles\Puzzle_2.txt" />
+    <None Remove="Cocossharp\Puzzles\Puzzle_3.txt" />
     <None Remove="ost.mp3" />
     <None Remove="regles.txt" />
     <None Remove="test.mp3" />
@@ -19,6 +21,8 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Cocossharp\Puzzles\Puzzle_1.txt" />
+    <EmbeddedResource Include="Cocossharp\Puzzles\Puzzle_2.txt" />
+    <EmbeddedResource Include="Cocossharp\Puzzles\Puzzle_3.txt" />
     <EmbeddedResource Include="ost.mp3" />
     <EmbeddedResource Include="regles.txt" />
     <EmbeddedResource Include="test.mp3" />

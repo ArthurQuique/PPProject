@@ -18,12 +18,20 @@ namespace PPProject
 
             puzzle_1.Clicked += (sender, e) => Puzzle1Page_Button_Clicked(1);
 
+            puzzle_2.Clicked += (sender, e) => Puzzle2Page_Button_Clicked(1);
+
         }
 
         private void Puzzle1Page_Button_Clicked(int i)
         {
             
-            Navigation.PushAsync(new Puzzle1Page(i));
+            Navigation.PushAsync(new Puzzle1Page());
+        }
+
+        private void Puzzle2Page_Button_Clicked(int i)
+        {
+
+            Navigation.PushAsync(new Puzzle2Page());
         }
 
     }

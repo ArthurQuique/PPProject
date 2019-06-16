@@ -20,7 +20,7 @@
 
             <!-- Content -->
             <Button x:Name="puzzle_1"
-                    Text="Puzzle 1" 
+                    Text="GTR Facile 1" 
                     TextColor="White"
                     FontSize="24"
                     FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
@@ -28,7 +28,7 @@
                     BackgroundColor="#BF5827F6"/>
 
             <Button x:Name="puzzle_2"
-                    Text="Puzzle 2" 
+                    Text="GTR Facile 2" 
                     TextColor="White"
                     FontSize="24"
                     FontFamily="Orbitron-Bold.ttf#Orbitron-Bold"
